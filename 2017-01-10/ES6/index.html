@@ -86,20 +86,20 @@
 
 <meta name="description" content="Array1Array.prototype.entries()  //数组的 entries () 返回一个 Array Iterator 对象，该对象包含数组中每一个索引的键值对
 1Array.prototype.keys()  //数组的 keys() 方法返回一个数组索引的迭代器.
-Iterator－迭代器迭代器是ES6中独立的内建类, 通过实现 [Symbol.iterator]() 和">
+Iterator－迭代器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6">
 <meta property="og:url" content="http://yoursite.com/2017-01-10/ES6/index.html">
 <meta property="og:site_name" content="Fancy's Blog">
 <meta property="og:description" content="Array1Array.prototype.entries()  //数组的 entries () 返回一个 Array Iterator 对象，该对象包含数组中每一个索引的键值对
 1Array.prototype.keys()  //数组的 keys() 方法返回一个数组索引的迭代器.
-Iterator－迭代器迭代器是ES6中独立的内建类, 通过实现 [Symbol.iterator]() 和">
-<meta property="og:updated_time" content="2017-01-12T11:11:23.000Z">
+Iterator－迭代器">
+<meta property="og:updated_time" content="2017-02-09T08:14:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6">
 <meta name="twitter:description" content="Array1Array.prototype.entries()  //数组的 entries () 返回一个 Array Iterator 对象，该对象包含数组中每一个索引的键值对
 1Array.prototype.keys()  //数组的 keys() 方法返回一个数组索引的迭代器.
-Iterator－迭代器迭代器是ES6中独立的内建类, 通过实现 [Symbol.iterator]() 和">
+Iterator－迭代器">
 
 
 
@@ -329,7 +329,8 @@ Iterator－迭代器迭代器是ES6中独立的内建类, 通过实现 [Symbol.i
       
         <h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Array.prototype.entries()  //数组的 entries () 返回一个 Array Iterator 对象，该对象包含数组中每一个索引的键值对</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Array.prototype.keys()  //数组的 keys() 方法返回一个数组索引的迭代器.</div></pre></td></tr></table></figure>
-<h3 id="Iterator－迭代器"><a href="#Iterator－迭代器" class="headerlink" title="Iterator－迭代器"></a>Iterator－迭代器</h3><p>迭代器是ES6中独立的内建类, 通过实现 <code>[Symbol.iterator]()</code> 和 <code>.next()</code>两个方法你就可以创建自定义迭代器.</p>
+<h3 id="Iterator－迭代器"><a href="#Iterator－迭代器" class="headerlink" title="Iterator－迭代器"></a>Iterator－迭代器</h3><a id="more"></a>
+<p>迭代器是ES6中独立的内建类, 通过实现 <code>[Symbol.iterator]()</code> 和 <code>.next()</code>两个方法你就可以创建自定义迭代器.</p>
 <h4 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">const nodeIterator = &#123; number: self.number &#125;;</div><div class="line">    nodeIterator[Symbol.iterator] = function (number) &#123;</div><div class="line">      let currentIndex = -1;</div><div class="line">      return &#123;</div><div class="line">        next: () =&gt; &#123;</div><div class="line">          currentIndex += 1;</div><div class="line">          return currentIndex &lt; this.number ? &#123; value: currentIndex, done: false &#125; : &#123; done: true &#125;;</div><div class="line">        &#125;,</div><div class="line">      &#125;;</div><div class="line">    &#125;;</div><div class="line">    console.log([...nodeIterator]);</div></pre></td></tr></table></figure>
 <h3 id="Generators－生成器"><a href="#Generators－生成器" class="headerlink" title="Generators－生成器"></a>Generators－生成器</h3><blockquote>
 <p>生成器对象由生成器函数（function*）返回. 同时遵循The iterable protocol 可遍历协议和The iterator protocol 迭代器模式协议.</p>
@@ -530,7 +531,7 @@ Iterator－迭代器迭代器是ES6中独立的内建类, 通过实现 [Symbol.i
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
