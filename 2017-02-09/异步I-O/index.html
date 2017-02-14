@@ -84,16 +84,24 @@
 
 
 
-<meta name="description" content="让技术支撑起我的小小城......">
+<meta name="description" content="异步I/O 与 非阻塞I/O异步和非阻塞都达到并行 I/O 的目的，但对于计算机内核 I/O 而已，异步／同步、阻塞／非阻塞实际上是两回事。
+操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。
+内核在进行 I/O 操作时，通过文件描述符进行管理。应用程序进行 I/O 调用，需要先打开文件描述符，然后再根据再根据文件描述符实现文件的读取。非阻塞 I/O 与阻塞">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6 生成器-Generators">
-<meta property="og:url" content="http://yoursite.com/2017-01-10/ES6-生成器-Generators/index.html">
+<meta property="og:title" content="《深入浅出Node.js》(二) 异步I/O">
+<meta property="og:url" content="http://yoursite.com/2017-02-09/异步I-O/index.html">
 <meta property="og:site_name" content="Fancy's Blog">
-<meta property="og:description" content="让技术支撑起我的小小城......">
-<meta property="og:updated_time" content="2017-01-10T07:36:01.000Z">
+<meta property="og:description" content="异步I/O 与 非阻塞I/O异步和非阻塞都达到并行 I/O 的目的，但对于计算机内核 I/O 而已，异步／同步、阻塞／非阻塞实际上是两回事。
+操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。
+内核在进行 I/O 操作时，通过文件描述符进行管理。应用程序进行 I/O 调用，需要先打开文件描述符，然后再根据再根据文件描述符实现文件的读取。非阻塞 I/O 与阻塞">
+<meta property="og:image" content="http://yoursite.com/images/asyncIO/tick.png">
+<meta property="og:updated_time" content="2017-02-09T09:25:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6 生成器-Generators">
-<meta name="twitter:description" content="让技术支撑起我的小小城......">
+<meta name="twitter:title" content="《深入浅出Node.js》(二) 异步I/O">
+<meta name="twitter:description" content="异步I/O 与 非阻塞I/O异步和非阻塞都达到并行 I/O 的目的，但对于计算机内核 I/O 而已，异步／同步、阻塞／非阻塞实际上是两回事。
+操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。
+内核在进行 I/O 操作时，通过文件描述符进行管理。应用程序进行 I/O 调用，需要先打开文件描述符，然后再根据再根据文件描述符实现文件的读取。非阻塞 I/O 与阻塞">
+<meta name="twitter:image" content="http://yoursite.com/images/asyncIO/tick.png">
 
 
 
@@ -121,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017-01-10/ES6-生成器-Generators/"/>
+  <link rel="canonical" href="http://yoursite.com/2017-02-09/异步I-O/"/>
 
 
 
 
 
-  <title> ES6 生成器-Generators | Fancy's Blog </title>
+  <title> 《深入浅出Node.js》(二) 异步I/O | Fancy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-01-10/ES6-生成器-Generators/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-02-09/异步I-O/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fancy">
@@ -272,7 +280,7 @@
             
             
               
-                ES6 生成器-Generators
+                《深入浅出Node.js》(二) 异步I/O
               
             
           </h1>
@@ -285,8 +293,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-10T11:44:47+08:00">
-                2017-01-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T16:24:26+08:00">
+                2017-02-09
               </time>
             
 
@@ -321,7 +329,13 @@
       
 
       
-        
+        <h1 id="异步I-O-与-非阻塞I-O"><a href="#异步I-O-与-非阻塞I-O" class="headerlink" title="异步I/O 与 非阻塞I/O"></a>异步I/O 与 非阻塞I/O</h1><p>异步和非阻塞都达到并行 I/O 的目的，但对于计算机内核 I/O 而已，异步／同步、阻塞／非阻塞实际上是两回事。<br></p>
+<p>操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。</p>
+<p>内核在进行 I/O 操作时，通过文件描述符进行管理。应用程序进行 I/O 调用，需要先打开文件描述符，然后再根据再根据文件描述符实现文件的读取。非阻塞 I/O 与阻塞 I/O 的区别在于阻塞 I/O 整个取数据的过程，而非阻塞 I/O 则不带数据直接返回，要获取数据，还需要通过文件描述符在次读取，为获取完整的数据需要反复调用 I/O 操作确认是否完成。这种重复调用判断操作是否完成的技术叫轮询。</p>
+<h1 id="Node-的异步-I-O"><a href="#Node-的异步-I-O" class="headerlink" title="Node 的异步 I/O"></a>Node 的异步 I/O</h1><h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><p>事件循环是 Node 自身的执行模型，使得回调函数普及。<br>进程启动时，Node 创建 while(true) 的循环，执行循环体的过程查看是否有事件待处理，如果有，则取出事件及相关的回调函数并执行，然后进入下一个循环，不再有事件处理，则退出进程。</p>
+<p><img src="/images/asyncIO/tick.png" alt="&#39;Tick 流程图&#39;"></p>
+<h2 id="观察者"><a href="#观察者" class="headerlink" title="观察者"></a>观察者</h2><p>每个事件循环都有一个或多个观察者，判断是否有事件要处理。</p>
+
       
     </div>
 
@@ -347,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016-12-27/CommonJS/" rel="next" title="《深入浅出Node.js》(一) CommonJS">
-                <i class="fa fa-chevron-left"></i> 《深入浅出Node.js》(一) CommonJS
+              <a href="/2017-02-09/AMD规范/" rel="next" title="AMD 规范">
+                <i class="fa fa-chevron-left"></i> AMD 规范
               </a>
             
           </div>
@@ -356,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017-01-10/ES6/" rel="prev" title="ES6">
-                ES6 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -406,8 +416,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -453,6 +472,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异步I-O-与-非阻塞I-O"><span class="nav-number">1.</span> <span class="nav-text">异步I/O 与 非阻塞I/O</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-的异步-I-O"><span class="nav-number">2.</span> <span class="nav-text">Node 的异步 I/O</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件循环"><span class="nav-number">2.1.</span> <span class="nav-text">事件循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者"><span class="nav-number">2.2.</span> <span class="nav-text">观察者</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
