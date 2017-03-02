@@ -85,22 +85,19 @@
 
 
 <meta name="description" content="异步I/O 与 非阻塞I/O异步和非阻塞都达到并行 I/O 的目的，但对于计算机内核 I/O 而已，异步／同步、阻塞／非阻塞实际上是两回事。
-操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。
-内核在进行 I/O 操作时，通过文件描述符进行管理。应用程序进行 I/O 调用，需要先打开文件描述符，然后再根据再根据文件描述符实现文件的读取。非阻塞 I/O 与阻塞">
+操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《深入浅出Node.js》(二) 异步I/O">
 <meta property="og:url" content="http://yoursite.com/2017-02-09/异步I-O/index.html">
 <meta property="og:site_name" content="Fancy's Blog">
 <meta property="og:description" content="异步I/O 与 非阻塞I/O异步和非阻塞都达到并行 I/O 的目的，但对于计算机内核 I/O 而已，异步／同步、阻塞／非阻塞实际上是两回事。
-操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。
-内核在进行 I/O 操作时，通过文件描述符进行管理。应用程序进行 I/O 调用，需要先打开文件描述符，然后再根据再根据文件描述符实现文件的读取。非阻塞 I/O 与阻塞">
+操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。">
 <meta property="og:image" content="http://yoursite.com/images/asyncIO/tick.png">
-<meta property="og:updated_time" content="2017-02-17T06:33:28.000Z">
+<meta property="og:updated_time" content="2017-02-28T06:03:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入浅出Node.js》(二) 异步I/O">
 <meta name="twitter:description" content="异步I/O 与 非阻塞I/O异步和非阻塞都达到并行 I/O 的目的，但对于计算机内核 I/O 而已，异步／同步、阻塞／非阻塞实际上是两回事。
-操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。
-内核在进行 I/O 操作时，通过文件描述符进行管理。应用程序进行 I/O 调用，需要先打开文件描述符，然后再根据再根据文件描述符实现文件的读取。非阻塞 I/O 与阻塞">
+操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。">
 <meta name="twitter:image" content="http://yoursite.com/images/asyncIO/tick.png">
 
 
@@ -349,6 +346,7 @@
       
         <h1 id="异步I-O-与-非阻塞I-O"><a href="#异步I-O-与-非阻塞I-O" class="headerlink" title="异步I/O 与 非阻塞I/O"></a>异步I/O 与 非阻塞I/O</h1><p>异步和非阻塞都达到并行 I/O 的目的，但对于计算机内核 I/O 而已，异步／同步、阻塞／非阻塞实际上是两回事。<br></p>
 <p>操作系统内核对于 I/O 只有两种方式，阻塞与非阻塞。调用阻塞 I/O 时需等待数据返回。</p>
+<a id="more"></a>
 <p>内核在进行 I/O 操作时，通过文件描述符进行管理。应用程序进行 I/O 调用，需要先打开文件描述符，然后再根据再根据文件描述符实现文件的读取。非阻塞 I/O 与阻塞 I/O 的区别在于阻塞 I/O 整个取数据的过程，而非阻塞 I/O 则不带数据直接返回，要获取数据，还需要通过文件描述符在次读取，为获取完整的数据需要反复调用 I/O 操作确认是否完成。这种重复调用判断操作是否完成的技术叫轮询。</p>
 <h1 id="Node-的异步-I-O"><a href="#Node-的异步-I-O" class="headerlink" title="Node 的异步 I/O"></a>Node 的异步 I/O</h1><h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><p>事件循环是 Node 自身的执行模型，使得回调函数普及。<br>进程启动时，Node 创建 while(true) 的循环，执行循环体的过程查看是否有事件待处理，如果有，则取出事件及相关的回调函数并执行，然后进入下一个循环，不再有事件处理，则退出进程。</p>
 <p><img src="/images/asyncIO/tick.png" alt="&#39;Tick 流程图&#39;"></p>
@@ -459,7 +457,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

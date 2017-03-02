@@ -87,7 +87,7 @@
 <meta name="description" content="Performance.timing API 性能打点
 内联css
 数据度量 －&amp;gt; 效果评估 －&amp;gt; 上线
-减少 HTTP 请求当浏览器向服务器发送一个 http 请求获取数据会经历如下过程：DNS域名解析 –&amp;gt; 开启一个链接(tcp/ip 三次握手) –&amp;gt; 建立TCP连接后发起http请求 –&amp;gt; 等待(网络延迟 &amp;amp;&amp;amp; 服务器的处理时间) –&amp;gt; 下">
+减少 HTTP 请求">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端性能优化">
 <meta property="og:url" content="http://yoursite.com/2016-12-17/前端性能优化/index.html">
@@ -95,14 +95,14 @@
 <meta property="og:description" content="Performance.timing API 性能打点
 内联css
 数据度量 －&amp;gt; 效果评估 －&amp;gt; 上线
-减少 HTTP 请求当浏览器向服务器发送一个 http 请求获取数据会经历如下过程：DNS域名解析 –&amp;gt; 开启一个链接(tcp/ip 三次握手) –&amp;gt; 建立TCP连接后发起http请求 –&amp;gt; 等待(网络延迟 &amp;amp;&amp;amp; 服务器的处理时间) –&amp;gt; 下">
-<meta property="og:updated_time" content="2017-02-21T05:27:54.000Z">
+减少 HTTP 请求">
+<meta property="og:updated_time" content="2017-02-28T06:02:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端性能优化">
 <meta name="twitter:description" content="Performance.timing API 性能打点
 内联css
 数据度量 －&amp;gt; 效果评估 －&amp;gt; 上线
-减少 HTTP 请求当浏览器向服务器发送一个 http 请求获取数据会经历如下过程：DNS域名解析 –&amp;gt; 开启一个链接(tcp/ip 三次握手) –&amp;gt; 建立TCP连接后发起http请求 –&amp;gt; 等待(网络延迟 &amp;amp;&amp;amp; 服务器的处理时间) –&amp;gt; 下">
+减少 HTTP 请求">
 
 
 
@@ -351,7 +351,8 @@
         <p>Performance.timing API 性能打点</p>
 <p>内联css</p>
 <p>数据度量 －&gt; 效果评估 －&gt; 上线</p>
-<h1 id="减少-HTTP-请求"><a href="#减少-HTTP-请求" class="headerlink" title="减少 HTTP 请求"></a>减少 HTTP 请求</h1><p>当浏览器向服务器发送一个 http 请求获取数据会经历如下过程：DNS域名解析 –&gt; 开启一个链接(tcp/ip 三次握手) –&gt; 建立TCP连接后发起http请求 –&gt; 等待(网络延迟 &amp;&amp; 服务器的处理时间) –&gt; 下载<br>大部分 http 请求花费时间是在建立与等待。http 协议建立 TCP/IP 协议之上。</p>
+<h1 id="减少-HTTP-请求"><a href="#减少-HTTP-请求" class="headerlink" title="减少 HTTP 请求"></a>减少 HTTP 请求</h1><a id="more"></a>
+<p>当浏览器向服务器发送一个 http 请求获取数据会经历如下过程：DNS域名解析 –&gt; 开启一个链接(tcp/ip 三次握手) –&gt; 建立TCP连接后发起http请求 –&gt; 等待(网络延迟 &amp;&amp; 服务器的处理时间) –&gt; 下载<br>大部分 http 请求花费时间是在建立与等待。http 协议建立 TCP/IP 协议之上。</p>
 <ul>
 <li><strong>css sprites:</strong> 将多张图片合成一副单独的图片，使用css的background-position属性辅助放到合适的位置上。降低了下载量，合并的图片比分离的图片小，降低了图片自身的开销(颜色表、格式信息等)，现逐渐被 <code>iconfont</code> 和  <code>SVG Sprite</code> 代替。</li>
 <li>内联图片: 通过使用 data:URL 模式可以在页面中包含图片而无需额外的请求。也可将图片放到css中作为背景使用，意味着数据可缓存在样式表内部。另base64有损压缩！</li>
@@ -393,7 +394,7 @@
 <li>防止 DDOS 攻击。</li>
 </ul>
 <h2 id="域名收敛-1"><a href="#域名收敛-1" class="headerlink" title="域名收敛"></a>域名收敛</h2><p>域名收敛的意思就是建议将静态资源只放在一个域名下面。因地制宜，移动互联网时代通过无线设备访问网站，这种情况下提出域名收敛。<br>发送http请求，DNS 解析在移动端占据大部分时间。</p>
-<p><a href="http://taobaofed.org/blog/2015/12/16/h5-performance-optimization-and-domain-convergence/" target="_blank" rel="external">域名收敛</a></p>
+<h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p><a href="http://taobaofed.org/blog/2015/12/16/h5-performance-optimization-and-domain-convergence/" target="_blank" rel="external">域名收敛</a></p>
 
       
     </div>
@@ -506,7 +507,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -558,7 +559,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#减少-HTTP-请求"><span class="nav-number">1.</span> <span class="nav-text">减少 HTTP 请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#页面内部优化"><span class="nav-number">2.</span> <span class="nav-text">页面内部优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启用缓存"><span class="nav-number">3.</span> <span class="nav-text">启用缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#减少下载量"><span class="nav-number">4.</span> <span class="nav-text">减少下载量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络连接上的优化"><span class="nav-number">5.</span> <span class="nav-text">网络连接上的优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#减少-DNS-查询"><span class="nav-number">6.</span> <span class="nav-text">减少 DNS 查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#域名收敛"><span class="nav-number">7.</span> <span class="nav-text">域名收敛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-迭代解析"><span class="nav-number">7.1.</span> <span class="nav-text">DNS 迭代解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名发散"><span class="nav-number">7.2.</span> <span class="nav-text">域名发散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名收敛-1"><span class="nav-number">7.3.</span> <span class="nav-text">域名收敛</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#减少-HTTP-请求"><span class="nav-number">1.</span> <span class="nav-text">减少 HTTP 请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#页面内部优化"><span class="nav-number">2.</span> <span class="nav-text">页面内部优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启用缓存"><span class="nav-number">3.</span> <span class="nav-text">启用缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#减少下载量"><span class="nav-number">4.</span> <span class="nav-text">减少下载量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络连接上的优化"><span class="nav-number">5.</span> <span class="nav-text">网络连接上的优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#减少-DNS-查询"><span class="nav-number">6.</span> <span class="nav-text">减少 DNS 查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#域名收敛"><span class="nav-number">7.</span> <span class="nav-text">域名收敛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-迭代解析"><span class="nav-number">7.1.</span> <span class="nav-text">DNS 迭代解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名发散"><span class="nav-number">7.2.</span> <span class="nav-text">域名发散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名收敛-1"><span class="nav-number">7.3.</span> <span class="nav-text">域名收敛</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献："><span class="nav-number">7.3.1.</span> <span class="nav-text">参考文献：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

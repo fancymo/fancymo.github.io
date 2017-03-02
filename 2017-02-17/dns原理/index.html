@@ -86,26 +86,20 @@
 
 <meta name="description" content="DNS服务器根据域名的层级，进行分级查询。
 
-DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。
-域名的层级顶级域名(top-level domain: TLD)次级域名(second-level domain: SLD)主机名(host)
-12345主机名.次级域名.顶级域名.根域名&amp;lt;protocol&amp;gt;&amp;lt;hostn">
+DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DNS 原理">
 <meta property="og:url" content="http://yoursite.com/2017-02-17/dns原理/index.html">
 <meta property="og:site_name" content="Fancy's Blog">
 <meta property="og:description" content="DNS服务器根据域名的层级，进行分级查询。
 
-DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。
-域名的层级顶级域名(top-level domain: TLD)次级域名(second-level domain: SLD)主机名(host)
-12345主机名.次级域名.顶级域名.根域名&amp;lt;protocol&amp;gt;&amp;lt;hostn">
-<meta property="og:updated_time" content="2017-02-17T08:08:28.000Z">
+DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。">
+<meta property="og:updated_time" content="2017-02-28T06:03:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNS 原理">
 <meta name="twitter:description" content="DNS服务器根据域名的层级，进行分级查询。
 
-DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。
-域名的层级顶级域名(top-level domain: TLD)次级域名(second-level domain: SLD)主机名(host)
-12345主机名.次级域名.顶级域名.根域名&amp;lt;protocol&amp;gt;&amp;lt;hostn">
+DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。">
 
 
 
@@ -337,6 +331,7 @@ DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配
 <p>DNS服务器根据域名的层级，进行分级查询。</p>
 </blockquote>
 <p>DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。</p>
+<a id="more"></a>
 <h3 id="域名的层级"><a href="#域名的层级" class="headerlink" title="域名的层级"></a>域名的层级</h3><p>顶级域名(top-level domain: TLD)<br>次级域名(second-level domain: SLD)<br>主机名(host)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">主机名.次级域名.顶级域名.根域名</div><div class="line">&lt;protocol&gt;&lt;hostname&gt;.&lt;sld&gt;.&lt;tld&gt;.</div><div class="line"># 即</div><div class="line"></div><div class="line">host.sld.tld.root</div></pre></td></tr></table></figure>
 <h3 id="根域名服务器"><a href="#根域名服务器" class="headerlink" title="根域名服务器"></a>根域名服务器</h3><p>每一级域名都有自己的NS记录，NS记录指向该级域名的域名服务器。这些服务器知道下一级域名的各种记录。</p>
@@ -476,7 +471,7 @@ DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
