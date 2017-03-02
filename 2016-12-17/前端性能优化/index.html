@@ -84,25 +84,16 @@
 
 
 
-<meta name="description" content="Performance.timing API 性能打点
-内联css
-数据度量 －&amp;gt; 效果评估 －&amp;gt; 上线
-减少 HTTP 请求">
+<meta name="description" content="作为一个有追求的前端，怎么会不为那几毫秒的而斗争呢？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端性能优化">
 <meta property="og:url" content="http://yoursite.com/2016-12-17/前端性能优化/index.html">
 <meta property="og:site_name" content="Fancy's Blog">
-<meta property="og:description" content="Performance.timing API 性能打点
-内联css
-数据度量 －&amp;gt; 效果评估 －&amp;gt; 上线
-减少 HTTP 请求">
-<meta property="og:updated_time" content="2017-02-28T06:02:11.000Z">
+<meta property="og:description" content="作为一个有追求的前端，怎么会不为那几毫秒的而斗争呢？">
+<meta property="og:updated_time" content="2017-03-02T09:28:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端性能优化">
-<meta name="twitter:description" content="Performance.timing API 性能打点
-内联css
-数据度量 －&amp;gt; 效果评估 －&amp;gt; 上线
-减少 HTTP 请求">
+<meta name="twitter:description" content="作为一个有追求的前端，怎么会不为那几毫秒的而斗争呢？">
 
 
 
@@ -313,8 +304,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
+                  <a href="/categories/性能/" itemprop="url" rel="index">
+                    <span itemprop="name">性能</span>
                   </a>
                 </span>
 
@@ -348,11 +339,9 @@
       
 
       
-        <p>Performance.timing API 性能打点</p>
-<p>内联css</p>
-<p>数据度量 －&gt; 效果评估 －&gt; 上线</p>
-<h1 id="减少-HTTP-请求"><a href="#减少-HTTP-请求" class="headerlink" title="减少 HTTP 请求"></a>减少 HTTP 请求</h1><a id="more"></a>
-<p>当浏览器向服务器发送一个 http 请求获取数据会经历如下过程：DNS域名解析 –&gt; 开启一个链接(tcp/ip 三次握手) –&gt; 建立TCP连接后发起http请求 –&gt; 等待(网络延迟 &amp;&amp; 服务器的处理时间) –&gt; 下载<br>大部分 http 请求花费时间是在建立与等待。http 协议建立 TCP/IP 协议之上。</p>
+        <p>作为一个有追求的前端，怎么会不为那几毫秒的而斗争呢？</p>
+<a id="more"></a>
+<h1 id="减少-HTTP-请求"><a href="#减少-HTTP-请求" class="headerlink" title="减少 HTTP 请求"></a>减少 HTTP 请求</h1><p>当浏览器向服务器发送一个 http 请求获取数据会经历如下过程：DNS域名解析 –&gt; 开启一个链接(tcp/ip 三次握手) –&gt; 建立TCP连接后发起http请求 –&gt; 等待(网络延迟 &amp;&amp; 服务器的处理时间) –&gt; 下载<br>大部分 http 请求花费时间是在建立与等待。http 协议建立 TCP/IP 协议之上。</p>
 <ul>
 <li><strong>css sprites:</strong> 将多张图片合成一副单独的图片，使用css的background-position属性辅助放到合适的位置上。降低了下载量，合并的图片比分离的图片小，降低了图片自身的开销(颜色表、格式信息等)，现逐渐被 <code>iconfont</code> 和  <code>SVG Sprite</code> 代替。</li>
 <li>内联图片: 通过使用 data:URL 模式可以在页面中包含图片而无需额外的请求。也可将图片放到css中作为背景使用，意味着数据可缓存在样式表内部。另base64有损压缩！</li>
@@ -507,7 +496,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -515,7 +504,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

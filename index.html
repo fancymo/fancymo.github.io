@@ -249,6 +249,139 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-03-02/文本垂直居中/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fancy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Fancy's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Fancy's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017-03-02/文本垂直居中/" itemprop="url">
+                  文本垂直居中
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-02T23:45:53+08:00">
+                2017-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!-- ---
+title: 文本截断
+date: 2017-03-02 10:05
+tags:
+--- -->
+<h2 id="文本垂直居中"><a href="#文本垂直居中" class="headerlink" title="文本垂直居中"></a>文本垂直居中</h2><p>闲来无事，参考考拉的博文，研究了一下多种垂直居中的方式。</p>
+<h3 id="单行文本垂直居中-line-height"><a href="#单行文本垂直居中-line-height" class="headerlink" title="单行文本垂直居中  line-height "></a>单行文本垂直居中 <strong> line-height </strong></h3><p>嗯，只需设置行高与高度相同就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">height: 100px;</div><div class="line">line-height: 100px;</div></pre></td></tr></table></figure>
+<h3 id="多行文本垂直居中-伪元素"><a href="#多行文本垂直居中-伪元素" class="headerlink" title="多行文本垂直居中 伪元素"></a>多行文本垂直居中 <strong>伪元素</strong></h3><p>vertical-align 的对齐是需要有参照物的，如素锦般，就用伪元素给 </p><p> 元素创造一个兄弟👬。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.vertical-line-multi-i &#123;</div><div class="line">  height: 120px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-i::before &#123;</div><div class="line">    content: &apos;&apos;;</div><div class="line">    display: inline-block;</div><div class="line">    width: 0;</div><div class="line">    height: 100%;</div><div class="line">    vertical-align: middle;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-i p &#123;</div><div class="line">  display: inline-block;</div><div class="line">  vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="多行文本垂直居中-transform"><a href="#多行文本垂直居中-transform" class="headerlink" title="多行文本垂直居中 transform"></a>多行文本垂直居中 <strong>transform</strong></h3><p>这种方式就是宝宝一贯的作风啦～</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.vertical-line-multi-ii &#123;</div><div class="line">  position: relative;</div><div class="line">  height: 120px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-ii p &#123;</div><div class="line">  position: absolute;</div><div class="line">  display: inline-block;</div><div class="line">  margin: 0;</div><div class="line">  top: 50%;</div><div class="line">  transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="多行文本垂直居中-flex"><a href="#多行文本垂直居中-flex" class="headerlink" title="多行文本垂直居中 flex"></a>多行文本垂直居中 <strong>flex</strong></h3><p>如何能漏掉我们的宠儿，奈何还未得到所有浏览器的青睐，坐等 UC 支持，crying～</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">display: flex;</div><div class="line">align-items: center;</div><div class="line">justify-content: center;</div><div class="line">height: 120px;</div></pre></td></tr></table></figure>
+<h3 id="多行文本垂直居中-transform-amp-amp-伪元素"><a href="#多行文本垂直居中-transform-amp-amp-伪元素" class="headerlink" title="多行文本垂直居中 transform &amp;&amp; 伪元素"></a>多行文本垂直居中 <strong>transform</strong> &amp;&amp; <strong>伪元素</strong></h3><p>这番思考，总算有创新了，使用 transform 与 伪元素相结合，大抵前辈们已经用过了！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.vertical-line-multi-iiii &#123;</div><div class="line">  height: 120px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-iiii::before &#123;</div><div class="line">    content: &apos;&apos;;</div><div class="line">    display: inline-block;</div><div class="line">    width: 0;</div><div class="line">    height: 50%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-iiii p &#123;</div><div class="line">  margin: 0;</div><div class="line">  transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p><a href="https://github.com/kaola-fed/blog/issues/1" target="_blank" rel="external">文字垂直居中</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-02-28/聊聊iOS端滚动页面动画停止那些事/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -328,6 +461,9 @@
         
           
             <p>iOS 设备上响应顺序依次为 Touch -&gt; Media -&gt; Service -&gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。</p>
+<p>Android 的响应优先级别是 Application -&gt; Framwork -&gt; library -&gt; kernal，library 处理图形图像。</p>
+<p>&lt;– more –&gt;</p>
+<p>Android 的卡顿与其选择的 Java 语言脱不开干系，因虚拟机的存在，二次转化再执行的效率很低。其次便是响应机制，如上所述。Android 后台管理程序是一直运行在内存中的，不同于 iOS 的浏览记录，后台管理机制造成用户体验差异化放大。</p>
 
           
         
@@ -1414,140 +1550,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-01-10/ES6-生成器-Generators/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Fancy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Fancy's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Fancy's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017-01-10/ES6-生成器-Generators/" itemprop="url">
-                  ES6 生成器-Generators
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-10T11:44:47+08:00">
-                2017-01-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1593,7 +1595,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1601,7 +1603,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

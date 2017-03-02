@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="iOS 设备上响应顺序依次为 Touch -&amp;gt; Media -&amp;gt; Service -&amp;gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。">
+<meta name="description" content="iOS 设备上响应顺序依次为 Touch -&amp;gt; Media -&amp;gt; Service -&amp;gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。
+Android 的响应优先级别是 Application -&amp;gt; Framwork -&amp;gt; library -&amp;gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="聊聊iOS端滚动页面动画停止那些事">
 <meta property="og:url" content="http://yoursite.com/2017-02-28/聊聊iOS端滚动页面动画停止那些事/index.html">
 <meta property="og:site_name" content="Fancy's Blog">
-<meta property="og:description" content="iOS 设备上响应顺序依次为 Touch -&amp;gt; Media -&amp;gt; Service -&amp;gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。">
-<meta property="og:updated_time" content="2017-02-28T08:39:03.000Z">
+<meta property="og:description" content="iOS 设备上响应顺序依次为 Touch -&amp;gt; Media -&amp;gt; Service -&amp;gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。
+Android 的响应优先级别是 Application -&amp;gt; Framwork -&amp;gt; library -&amp;gt;">
+<meta property="og:updated_time" content="2017-03-02T10:23:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聊聊iOS端滚动页面动画停止那些事">
-<meta name="twitter:description" content="iOS 设备上响应顺序依次为 Touch -&amp;gt; Media -&amp;gt; Service -&amp;gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。">
+<meta name="twitter:description" content="iOS 设备上响应顺序依次为 Touch -&amp;gt; Media -&amp;gt; Service -&amp;gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。
+Android 的响应优先级别是 Application -&amp;gt; Framwork -&amp;gt; library -&amp;gt;">
 
 
 
@@ -322,6 +325,9 @@
 
       
         <p>iOS 设备上响应顺序依次为 Touch -&gt; Media -&gt; Service -&gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。</p>
+<p>Android 的响应优先级别是 Application -&gt; Framwork -&gt; library -&gt; kernal，library 处理图形图像。</p>
+<p>&lt;– more –&gt;</p>
+<p>Android 的卡顿与其选择的 Java 语言脱不开干系，因虚拟机的存在，二次转化再执行的效率很低。其次便是响应机制，如上所述。Android 后台管理程序是一直运行在内存中的，不同于 iOS 的浏览记录，后台管理机制造成用户体验差异化放大。</p>
 
       
     </div>
@@ -357,6 +363,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017-03-02/文本垂直居中/" rel="prev" title="文本垂直居中">
+                文本垂直居中 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -415,7 +425,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -423,7 +433,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

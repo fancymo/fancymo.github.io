@@ -84,19 +84,28 @@
 
 
 
-<meta name="description" content="AMD 规范AMD规范是对 CommonJS 规范的延伸，它的模块定义如下：
-1define(id?, dependencies?, factory);">
+<meta name="description" content="文本垂直居中闲来无事，参考考拉的博文，研究了一下多种垂直居中的方式。
+单行文本垂直居中  line-height 嗯，只需设置行高与高度相同就可以了。
+12height: 100px;line-height: 100px;
+多行文本垂直居中 伪元素vertical-align 的对齐是需要有参照物的，如素锦般，就用伪元素给  元素创造一个兄弟👬。
+12345678910111213141516">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AMD 规范">
-<meta property="og:url" content="http://yoursite.com/2017-02-09/AMD规范/index.html">
+<meta property="og:title" content="文本垂直居中">
+<meta property="og:url" content="http://yoursite.com/2017-03-02/文本垂直居中/index.html">
 <meta property="og:site_name" content="Fancy's Blog">
-<meta property="og:description" content="AMD 规范AMD规范是对 CommonJS 规范的延伸，它的模块定义如下：
-1define(id?, dependencies?, factory);">
-<meta property="og:updated_time" content="2017-02-17T06:33:24.000Z">
+<meta property="og:description" content="文本垂直居中闲来无事，参考考拉的博文，研究了一下多种垂直居中的方式。
+单行文本垂直居中  line-height 嗯，只需设置行高与高度相同就可以了。
+12height: 100px;line-height: 100px;
+多行文本垂直居中 伪元素vertical-align 的对齐是需要有参照物的，如素锦般，就用伪元素给  元素创造一个兄弟👬。
+12345678910111213141516">
+<meta property="og:updated_time" content="2017-03-02T15:46:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AMD 规范">
-<meta name="twitter:description" content="AMD 规范AMD规范是对 CommonJS 规范的延伸，它的模块定义如下：
-1define(id?, dependencies?, factory);">
+<meta name="twitter:title" content="文本垂直居中">
+<meta name="twitter:description" content="文本垂直居中闲来无事，参考考拉的博文，研究了一下多种垂直居中的方式。
+单行文本垂直居中  line-height 嗯，只需设置行高与高度相同就可以了。
+12height: 100px;line-height: 100px;
+多行文本垂直居中 伪元素vertical-align 的对齐是需要有参照物的，如素锦般，就用伪元素给  元素创造一个兄弟👬。
+12345678910111213141516">
 
 
 
@@ -124,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017-02-09/AMD规范/"/>
+  <link rel="canonical" href="http://yoursite.com/2017-03-02/文本垂直居中/"/>
 
 
 
 
 
-  <title> AMD 规范 | Fancy's Blog </title>
+  <title> 文本垂直居中 | Fancy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-02-09/AMD规范/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-03-02/文本垂直居中/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fancy">
@@ -275,7 +284,7 @@
             
             
               
-                AMD 规范
+                文本垂直居中
               
             
           </h1>
@@ -288,8 +297,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T15:30:40+08:00">
-                2017-02-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-02T23:45:53+08:00">
+                2017-03-02
               </time>
             
 
@@ -298,24 +307,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -342,16 +333,23 @@
       
 
       
-        <h1 id="AMD-规范"><a href="#AMD-规范" class="headerlink" title="AMD 规范"></a>AMD 规范</h1><p>AMD规范是对 CommonJS 规范的延伸，它的模块定义如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define(id?, dependencies?, factory);</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">define(function() &#123;</div><div class="line"> var exports = &#123;&#125;;</div><div class="line"> exports.sayHello = function() &#123;</div><div class="line"> alert(&apos;Hello from module: &apos; + module.id);</div><div class="line"> &#125;;</div><div class="line"> return exports;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>AMD 需要在声明模块时指定所有依赖。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">define([&apos;dep1&apos;, &apos;dep2&apos;], function (dep1, dep2) &#123;</div><div class="line"> return function () &#123;&#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>AMD 中需要 define 明确定义一个模块，在 Node 中是隐式包装的，目的是进行作用域隔离，仅在被需要的时候被引入，避免全局变量或者全局命名空间的方式，以避免变量污染和不小心被修改。</p>
-<h1 id="CMD-规范"><a href="#CMD-规范" class="headerlink" title="CMD 规范"></a>CMD 规范</h1><p>CMD 与 AMD 区别主要在于定义模块和依赖引入的部分。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">define(factory);</div></pre></td></tr></table></figure>
-<p>require、 exports 和 module 通过行参传递给模块，在需要依赖模块时，随时调用 require 引用即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">define(function(require, exports, module) &#123;</div><div class="line"> // The module code goes here</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<h1 id="兼容多种模块规范"><a href="#兼容多种模块规范" class="headerlink" title="兼容多种模块规范"></a>兼容多种模块规范</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">;(function (name, definition) &#123;</div><div class="line"> // 检测上下文环境是否为AMD或CMD</div><div class="line"> var hasDefine = typeof define === &apos;function&apos;,</div><div class="line"> // 检查上下文环境是否为Node</div><div class="line"> hasExports = typeof module !== &apos;undefined&apos; &amp;&amp; module.exports;</div><div class="line"> if (hasDefine) &#123;</div><div class="line"> // AMD环境或CMD环境</div><div class="line"> define(definition);</div><div class="line"> &#125; else if (hasExports) &#123;</div><div class="line"> // 定义为普通Node模块</div><div class="line"> module.exports = definition();</div><div class="line"> &#125; else &#123;</div><div class="line"> // 将模块的执行结果在 window 变量中，在浏览器中 this 指向 window</div><div class="line"> this[name] = definition();</div><div class="line"> &#125;</div><div class="line">&#125;)(&apos;hello&apos;, function () &#123;</div><div class="line"> var hello = function () &#123;&#125;;</div><div class="line"> return hello;</div></pre></td></tr></table></figure>
+        <!-- ---
+title: 文本截断
+date: 2017-03-02 10:05
+tags:
+--- -->
+<h2 id="文本垂直居中"><a href="#文本垂直居中" class="headerlink" title="文本垂直居中"></a>文本垂直居中</h2><p>闲来无事，参考考拉的博文，研究了一下多种垂直居中的方式。</p>
+<h3 id="单行文本垂直居中-line-height"><a href="#单行文本垂直居中-line-height" class="headerlink" title="单行文本垂直居中  line-height "></a>单行文本垂直居中 <strong> line-height </strong></h3><p>嗯，只需设置行高与高度相同就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">height: 100px;</div><div class="line">line-height: 100px;</div></pre></td></tr></table></figure>
+<h3 id="多行文本垂直居中-伪元素"><a href="#多行文本垂直居中-伪元素" class="headerlink" title="多行文本垂直居中 伪元素"></a>多行文本垂直居中 <strong>伪元素</strong></h3><p>vertical-align 的对齐是需要有参照物的，如素锦般，就用伪元素给 </p><p> 元素创造一个兄弟👬。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.vertical-line-multi-i &#123;</div><div class="line">  height: 120px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-i::before &#123;</div><div class="line">    content: &apos;&apos;;</div><div class="line">    display: inline-block;</div><div class="line">    width: 0;</div><div class="line">    height: 100%;</div><div class="line">    vertical-align: middle;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-i p &#123;</div><div class="line">  display: inline-block;</div><div class="line">  vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="多行文本垂直居中-transform"><a href="#多行文本垂直居中-transform" class="headerlink" title="多行文本垂直居中 transform"></a>多行文本垂直居中 <strong>transform</strong></h3><p>这种方式就是宝宝一贯的作风啦～</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.vertical-line-multi-ii &#123;</div><div class="line">  position: relative;</div><div class="line">  height: 120px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-ii p &#123;</div><div class="line">  position: absolute;</div><div class="line">  display: inline-block;</div><div class="line">  margin: 0;</div><div class="line">  top: 50%;</div><div class="line">  transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="多行文本垂直居中-flex"><a href="#多行文本垂直居中-flex" class="headerlink" title="多行文本垂直居中 flex"></a>多行文本垂直居中 <strong>flex</strong></h3><p>如何能漏掉我们的宠儿，奈何还未得到所有浏览器的青睐，坐等 UC 支持，crying～</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">display: flex;</div><div class="line">align-items: center;</div><div class="line">justify-content: center;</div><div class="line">height: 120px;</div></pre></td></tr></table></figure>
+<h3 id="多行文本垂直居中-transform-amp-amp-伪元素"><a href="#多行文本垂直居中-transform-amp-amp-伪元素" class="headerlink" title="多行文本垂直居中 transform &amp;&amp; 伪元素"></a>多行文本垂直居中 <strong>transform</strong> &amp;&amp; <strong>伪元素</strong></h3><p>这番思考，总算有创新了，使用 transform 与 伪元素相结合，大抵前辈们已经用过了！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.vertical-line-multi-iiii &#123;</div><div class="line">  height: 120px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-iiii::before &#123;</div><div class="line">    content: &apos;&apos;;</div><div class="line">    display: inline-block;</div><div class="line">    width: 0;</div><div class="line">    height: 50%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-iiii p &#123;</div><div class="line">  margin: 0;</div><div class="line">  transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p><a href="https://github.com/kaola-fed/blog/issues/1" target="_blank" rel="external">文字垂直居中</a></p>
 
       
     </div>
@@ -378,8 +376,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-01-10/ES6/" rel="next" title="ES6">
-                <i class="fa fa-chevron-left"></i> ES6
+              <a href="/2017-02-28/聊聊iOS端滚动页面动画停止那些事/" rel="next" title="聊聊iOS端滚动页面动画停止那些事">
+                <i class="fa fa-chevron-left"></i> 聊聊iOS端滚动页面动画停止那些事
               </a>
             
           </div>
@@ -387,10 +385,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017-02-09/异步I-O/" rel="prev" title="《深入浅出Node.js》(二) 异步I/O">
-                《深入浅出Node.js》(二) 异步I/O <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -510,7 +504,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AMD-规范"><span class="nav-number">1.</span> <span class="nav-text">AMD 规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CMD-规范"><span class="nav-number">2.</span> <span class="nav-text">CMD 规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#兼容多种模块规范"><span class="nav-number">3.</span> <span class="nav-text">兼容多种模块规范</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本垂直居中"><span class="nav-number">1.</span> <span class="nav-text">文本垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单行文本垂直居中-line-height"><span class="nav-number">1.1.</span> <span class="nav-text">单行文本垂直居中  line-height </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行文本垂直居中-伪元素"><span class="nav-number">1.2.</span> <span class="nav-text">多行文本垂直居中 伪元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行文本垂直居中-transform"><span class="nav-number">1.3.</span> <span class="nav-text">多行文本垂直居中 transform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行文本垂直居中-flex"><span class="nav-number">1.4.</span> <span class="nav-text">多行文本垂直居中 flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行文本垂直居中-transform-amp-amp-伪元素"><span class="nav-number">1.5.</span> <span class="nav-text">多行文本垂直居中 transform && 伪元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献："><span class="nav-number">1.6.</span> <span class="nav-text">参考文献：</span></a></li></ol></li></ol></div>
             
 
           </div>
