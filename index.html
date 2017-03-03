@@ -326,26 +326,19 @@
 
       
         
-          
-            <!-- ---
+          <!-- ---
 title: 文本截断
 date: 2017-03-02 10:05
 tags:
 --- -->
 <h2 id="文本垂直居中"><a href="#文本垂直居中" class="headerlink" title="文本垂直居中"></a>文本垂直居中</h2><p>闲来无事，参考考拉的博文，研究了一下多种垂直居中的方式。</p>
-<h3 id="单行文本垂直居中-line-height"><a href="#单行文本垂直居中-line-height" class="headerlink" title="单行文本垂直居中  line-height "></a>单行文本垂直居中 <strong> line-height </strong></h3><p>嗯，只需设置行高与高度相同就可以了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">height: 100px;</div><div class="line">line-height: 100px;</div></pre></td></tr></table></figure>
-<h3 id="多行文本垂直居中-伪元素"><a href="#多行文本垂直居中-伪元素" class="headerlink" title="多行文本垂直居中 伪元素"></a>多行文本垂直居中 <strong>伪元素</strong></h3><p>vertical-align 的对齐是需要有参照物的，如素锦般，就用伪元素给 </p><p> 元素创造一个兄弟👬。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.vertical-line-multi-i &#123;</div><div class="line">  height: 120px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-i::before &#123;</div><div class="line">    content: &apos;&apos;;</div><div class="line">    display: inline-block;</div><div class="line">    width: 0;</div><div class="line">    height: 100%;</div><div class="line">    vertical-align: middle;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-i p &#123;</div><div class="line">  display: inline-block;</div><div class="line">  vertical-align: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="多行文本垂直居中-transform"><a href="#多行文本垂直居中-transform" class="headerlink" title="多行文本垂直居中 transform"></a>多行文本垂直居中 <strong>transform</strong></h3><p>这种方式就是宝宝一贯的作风啦～</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.vertical-line-multi-ii &#123;</div><div class="line">  position: relative;</div><div class="line">  height: 120px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-ii p &#123;</div><div class="line">  position: absolute;</div><div class="line">  display: inline-block;</div><div class="line">  margin: 0;</div><div class="line">  top: 50%;</div><div class="line">  transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="多行文本垂直居中-flex"><a href="#多行文本垂直居中-flex" class="headerlink" title="多行文本垂直居中 flex"></a>多行文本垂直居中 <strong>flex</strong></h3><p>如何能漏掉我们的宠儿，奈何还未得到所有浏览器的青睐，坐等 UC 支持，crying～</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">display: flex;</div><div class="line">align-items: center;</div><div class="line">justify-content: center;</div><div class="line">height: 120px;</div></pre></td></tr></table></figure>
-<h3 id="多行文本垂直居中-transform-amp-amp-伪元素"><a href="#多行文本垂直居中-transform-amp-amp-伪元素" class="headerlink" title="多行文本垂直居中 transform &amp;&amp; 伪元素"></a>多行文本垂直居中 <strong>transform</strong> &amp;&amp; <strong>伪元素</strong></h3><p>这番思考，总算有创新了，使用 transform 与 伪元素相结合，大抵前辈们已经用过了！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.vertical-line-multi-iiii &#123;</div><div class="line">  height: 120px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-iiii::before &#123;</div><div class="line">    content: &apos;&apos;;</div><div class="line">    display: inline-block;</div><div class="line">    width: 0;</div><div class="line">    height: 50%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.vertical-line-multi-iiii p &#123;</div><div class="line">  margin: 0;</div><div class="line">  transform: translateY(-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p><a href="https://github.com/kaola-fed/blog/issues/1" target="_blank" rel="external">文字垂直居中</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017-03-02/文本垂直居中/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -459,13 +452,15 @@ tags:
 
       
         
-          
-            <p>iOS 设备上响应顺序依次为 Touch -&gt; Media -&gt; Service -&gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。</p>
+          <p>iOS 设备上响应顺序依次为 Touch -&gt; Media -&gt; Service -&gt; Core 架构，用户接触到屏幕屏幕之后，系统最优先处理 Touch 层级的屏幕显示，当系统接受到 Touch 事件后会优先响应，会先暂停屏幕上 JS／CSS 的渲染。</p>
 <p>Android 的响应优先级别是 Application -&gt; Framwork -&gt; library -&gt; kernal，library 处理图形图像。</p>
-<p>&lt;– more –&gt;</p>
-<p>Android 的卡顿与其选择的 Java 语言脱不开干系，因虚拟机的存在，二次转化再执行的效率很低。其次便是响应机制，如上所述。Android 后台管理程序是一直运行在内存中的，不同于 iOS 的浏览记录，后台管理机制造成用户体验差异化放大。</p>
-
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017-02-28/聊聊iOS端滚动页面动画停止那些事/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
