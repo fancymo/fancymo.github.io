@@ -1,0 +1,692 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT, Fancy, Blog, Web, React" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="diff 是 Unix 很重要的工具程序。
+用来比较两个文本文件的差异，是代码版本管理的基石之一。
+1$ diff &amp;lt;变动前的文件&amp;gt; &amp;lt;变动后的文件&amp;gt;
+diff 的三种格式
+正常格式(normal diff)
+上下文格式(context diff)
+合并格式(unified diff)
+
+示例m1 文件1234特别是你
+m2 文件1234特别的你
+执行脚本12345$ di">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell - diff">
+<meta property="og:url" content="http://yoursite.com/2017-07-07/shell-diff/index.html">
+<meta property="og:site_name" content="Fancy's Blog">
+<meta property="og:description" content="diff 是 Unix 很重要的工具程序。
+用来比较两个文本文件的差异，是代码版本管理的基石之一。
+1$ diff &amp;lt;变动前的文件&amp;gt; &amp;lt;变动后的文件&amp;gt;
+diff 的三种格式
+正常格式(normal diff)
+上下文格式(context diff)
+合并格式(unified diff)
+
+示例m1 文件1234特别是你
+m2 文件1234特别的你
+执行脚本12345$ di">
+<meta property="og:updated_time" content="2017-07-10T02:38:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell - diff">
+<meta name="twitter:description" content="diff 是 Unix 很重要的工具程序。
+用来比较两个文本文件的差异，是代码版本管理的基石之一。
+1$ diff &amp;lt;变动前的文件&amp;gt; &amp;lt;变动后的文件&amp;gt;
+diff 的三种格式
+正常格式(normal diff)
+上下文格式(context diff)
+合并格式(unified diff)
+
+示例m1 文件1234特别是你
+m2 文件1234特别的你
+执行脚本12345$ di">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017-07-07/shell-diff/"/>
+
+
+
+
+
+  <title> shell - diff | Fancy's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Fancy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Too Young Too Simple >_</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-07-07/shell-diff/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fancy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Fancy's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Fancy's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                shell - diff
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-07T11:54:17+08:00">
+                2017-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>diff 是 Unix 很重要的工具程序。</p>
+<p>用来比较两个文本文件的差异，是代码版本管理的基石之一。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ diff &lt;变动前的文件&gt; &lt;变动后的文件&gt;</div></pre></td></tr></table></figure>
+<h3 id="diff-的三种格式"><a href="#diff-的三种格式" class="headerlink" title="diff 的三种格式"></a>diff 的三种格式</h3><ul>
+<li>正常格式(normal diff)</li>
+<li>上下文格式(context diff)</li>
+<li>合并格式(unified diff)</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>m1 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">特</div><div class="line">别</div><div class="line">是</div><div class="line">你</div></pre></td></tr></table></figure></p>
+<p>m2 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">特</div><div class="line">别</div><div class="line">的</div><div class="line">你</div></pre></td></tr></table></figure></p>
+<p>执行脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ diff m1 m2</div><div class="line">3c3</div><div class="line">&lt; 是</div><div class="line">---</div><div class="line">&gt; 的</div></pre></td></tr></table></figure></p>
+<p>第一行是提示，前面的 3 是 m1 中第三行有变化，中间的 <em>c</em> 表示变动的模式是内容改变（change），其它模式还有增加（add）,删除（delete）;</p>
+<p>第二行的小于号（&lt;）表示要从 m1 中删除该行，后面的 <em>是</em> 是改变的内容;</p>
+<p>第三行的 <em>—</em> 表示分隔 m1 和 m2。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2a3,5</div><div class="line">&gt; 的</div><div class="line">&gt; 的</div><div class="line">&gt; 的</div></pre></td></tr></table></figure>
+<p>2a3,5 表示在第 2 行之后添加来 3～5 行，内容为三行 的。</p>
+<h3 id="上下文格式的-diff"><a href="#上下文格式的-diff" class="headerlink" title="上下文格式的 diff"></a>上下文格式的 diff</h3><p>二十世纪八十年代初，加州大学伯克利分校推出 BSD 版本的 Unix 时，觉得 diff 的显示结果太过简单，加入了上下文。</p>
+<p>使用方法是加入 c 参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ diff -c mxl1.md mxl2.md</div><div class="line">*** mxl1.md	2017-07-07 14:36:20.000000000 +0800</div><div class="line">--- mxl2.md	2017-07-07 14:36:47.000000000 +0800</div><div class="line">***************</div><div class="line">*** 1,3 ****</div><div class="line">  特</div><div class="line">! 的</div><div class="line">  你</div><div class="line">--- 1,3 ----</div><div class="line">  特</div><div class="line">! 别</div><div class="line">  你</div></pre></td></tr></table></figure>
+<p>第一部分的两行, <code>***</code> 表示变动前的文件，<code>---</code> 表示变动后的文件。15个 <code>*</code>将文件的基本情况与变动内容分割开。</p>
+<p>文件内容每一行最前面，还有一个标记位，如果为空该行无变化，如果为感叹号（!），表示该行有改动；如果为减号（-），表示该行被删除，如果是加号（+），表示该行为新增。</p>
+<p>第四部分显示为变动后的文件，即 m2;</p>
+<h3 id="合并格式的-diff"><a href="#合并格式的-diff" class="headerlink" title="合并格式的 diff"></a>合并格式的 diff</h3><p>假使两个文件的相似度很高，上下文格式的 diff 讲显示大量重复的内容。1990年，GNU diff 推出‘合并格式’的 diff。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">diff -u mxl1.md mxl2.md</div><div class="line">--- mxl1.md	2017-07-07 14:36:20.000000000 +0800</div><div class="line">+++ mxl2.md	2017-07-07 14:36:47.000000000 +0800</div><div class="line">@@ -1,3 +1,3 @@</div><div class="line"> 特</div><div class="line">-的</div><div class="line">+别</div><div class="line"> 你</div></pre></td></tr></table></figure>
+<p>第一部分的两行, <code>---</code> 表示变动前的文件，<code>+++</code> 表示变动后的文件。</p>
+<p>第二部分，变动的位置用两个 @ 作为起首和结束。减号(-) 表示第一个文件，<em>1</em> 表示第1行, <em>7</em> 表示连续7行。<em>+1,3</em> 表示变动后的。</p>
+<h3 id="git-格式的-diff"><a href="#git-格式的-diff" class="headerlink" title="git 格式的 diff"></a>git 格式的 diff</h3><p>版本管理系统使用的是合并式 diff 的变体。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ diff --git mxl1.md mxl2.md</div><div class="line">diff --git a/mxl1.md b/mxl2.md</div><div class="line">index b6b05f4..6a17e91 100644</div><div class="line">--- a/mxl1.md</div><div class="line">+++ b/mxl2.md</div><div class="line">@@ -1,3 +1,3 @@</div><div class="line"> 特</div><div class="line">-的</div><div class="line">+别</div><div class="line"> 你</div></pre></td></tr></table></figure>
+<p>第一行表示结果为 git 格式的 diff。 进行比较的是 a版本的 mxl1.md(变动前)， 和b版本的 mxl2.md（变动后）。</p>
+<p>第二行表示两个版本的git哈希值，index 区域的 b6b05f4 与工作目录区域的 6a17e91 比较，100644 表示对象的模式，(普通文件644权限－ rw-r–r–)。<br>该行为扩展header，可能包含如下几种扩展的 header：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">old mode &lt;mode&gt;</div><div class="line">new mode &lt;mode&gt;</div><div class="line"></div><div class="line">deleted file mode &lt;mode&gt;</div><div class="line">new file mode &lt;mode&gt;</div><div class="line"></div><div class="line">copy from &lt;path&gt;</div><div class="line">copy to &lt;path&gt;</div><div class="line"></div><div class="line">rename from &lt;path&gt;</div><div class="line">rename to &lt;path&gt;</div><div class="line"></div><div class="line">similarity index &lt;number&gt;</div><div class="line">dissimilarity index &lt;number&gt;</div><div class="line">index &lt;hash&gt;..&lt;hash&gt; &lt;mode&gt;</div></pre></td></tr></table></figure></p>
+<p>第三行和第四行表示两个进行比较的文件。</p>
+<h4 id="新增、删除、复制、重命名文件的-Git-Diff-格式有些不同，解析时需要特别注意。"><a href="#新增、删除、复制、重命名文件的-Git-Diff-格式有些不同，解析时需要特别注意。" class="headerlink" title="新增、删除、复制、重命名文件的 Git Diff 格式有些不同，解析时需要特别注意。"></a>新增、删除、复制、重命名文件的 Git Diff 格式有些不同，解析时需要特别注意。</h4><p>新增<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">diff --git a/file b/file</div><div class="line">new file mode 100644</div><div class="line">index 0000000..53bffd7</div><div class="line">--- /dev/null</div><div class="line">+++ b/file</div></pre></td></tr></table></figure></p>
+<p>删除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">diff --git a/file b/file</div><div class="line">deleted file mode 100644</div><div class="line">index 53bffd7..0000000</div><div class="line">--- a/file</div><div class="line">+++ /dev/null</div></pre></td></tr></table></figure></p>
+<p>复制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">diff --git a/a b/b</div><div class="line">copy from a</div><div class="line">copy to b</div><div class="line">--- a/a</div><div class="line">+++ b/b</div></pre></td></tr></table></figure></p>
+<p>重命名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">diff --git a/a b/b</div><div class="line">rename from a</div><div class="line">rename to b</div><div class="line">--- a/a</div><div class="line">+++ b/b</div></pre></td></tr></table></figure></p>
+<p>在新增和删除时，diff –git header 中的两个文件名是一样的，我们需要查看 — 和 +++ 中的信息，新增或者删除的文件会使用 /dev/null 来表示。</p>
+<h4 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h4><p>在 Git Diff 中的二进制文件不会给出细节，而是使用下面的格式表示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">diff --git a/img.png b/img.png</div><div class="line">index 268373a..f07dd4c 100644</div><div class="line">Binary files a/img.png and b/img.png differ</div></pre></td></tr></table></figure></p>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-06-27/debounce-and-throttle/" rel="next" title="debounce and throttle">
+                <i class="fa fa-chevron-left"></i> debounce and throttle
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017-07-19/enzyme/" rel="prev" title="enzyme">
+                enzyme <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Fancy" />
+          <p class="site-author-name" itemprop="name">Fancy</p>
+          <p class="site-description motion-element" itemprop="description">让技术支撑起我的小小城......</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#diff-的三种格式"><span class="nav-number">1.</span> <span class="nav-text">diff 的三种格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文格式的-diff"><span class="nav-number">3.</span> <span class="nav-text">上下文格式的 diff</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并格式的-diff"><span class="nav-number">4.</span> <span class="nav-text">合并格式的 diff</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-格式的-diff"><span class="nav-number">5.</span> <span class="nav-text">git 格式的 diff</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新增、删除、复制、重命名文件的-Git-Diff-格式有些不同，解析时需要特别注意。"><span class="nav-number">5.1.</span> <span class="nav-text">新增、删除、复制、重命名文件的 Git Diff 格式有些不同，解析时需要特别注意。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二进制"><span class="nav-number">5.2.</span> <span class="nav-text">二进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解析"><span class="nav-number">5.3.</span> <span class="nav-text">解析</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fancy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
