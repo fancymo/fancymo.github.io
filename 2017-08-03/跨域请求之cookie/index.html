@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="网络," />
+  <meta name="keywords" content="Hexo, NexT, Fancy, Blog, Web, React" />
 
 
 
@@ -84,16 +84,34 @@
 
 
 
-<meta name="description" content="作为一个有追求的前端，怎么会不为那几毫秒的而斗争呢？">
+<meta name="description" content="CookieCookie 的使用使得基于无状态的 HTTP 协议上记录稳定的状态信息成为了可能.
+HTTP Cookie（也叫Web cookie或者浏览器Cookie）是服务器发送到用户浏览器并保存在浏览器上的一块数据, 它会在浏览器下一次发起请求时被携带并发送到服务器上.
+Cookie 主要用在如下三个方面:
+
+会话状态管理（如用户登录状态、购物车）
+个性化设置（如用户自定义设置）
+浏览器行为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端性能优化">
-<meta property="og:url" content="http://yoursite.com/2016-12-17/前端性能优化/index.html">
+<meta property="og:title" content="跨域请求之cookie">
+<meta property="og:url" content="http://yoursite.com/2017-08-03/跨域请求之cookie/index.html">
 <meta property="og:site_name" content="Fancy's Blog">
-<meta property="og:description" content="作为一个有追求的前端，怎么会不为那几毫秒的而斗争呢？">
-<meta property="og:updated_time" content="2017-03-02T09:28:53.000Z">
+<meta property="og:description" content="CookieCookie 的使用使得基于无状态的 HTTP 协议上记录稳定的状态信息成为了可能.
+HTTP Cookie（也叫Web cookie或者浏览器Cookie）是服务器发送到用户浏览器并保存在浏览器上的一块数据, 它会在浏览器下一次发起请求时被携带并发送到服务器上.
+Cookie 主要用在如下三个方面:
+
+会话状态管理（如用户登录状态、购物车）
+个性化设置（如用户自定义设置）
+浏览器行为">
+<meta property="og:updated_time" content="2017-08-03T08:27:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端性能优化">
-<meta name="twitter:description" content="作为一个有追求的前端，怎么会不为那几毫秒的而斗争呢？">
+<meta name="twitter:title" content="跨域请求之cookie">
+<meta name="twitter:description" content="CookieCookie 的使用使得基于无状态的 HTTP 协议上记录稳定的状态信息成为了可能.
+HTTP Cookie（也叫Web cookie或者浏览器Cookie）是服务器发送到用户浏览器并保存在浏览器上的一块数据, 它会在浏览器下一次发起请求时被携带并发送到服务器上.
+Cookie 主要用在如下三个方面:
+
+会话状态管理（如用户登录状态、购物车）
+个性化设置（如用户自定义设置）
+浏览器行为">
 
 
 
@@ -121,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016-12-17/前端性能优化/"/>
+  <link rel="canonical" href="http://yoursite.com/2017-08-03/跨域请求之cookie/"/>
 
 
 
 
 
-  <title> 前端性能优化 | Fancy's Blog </title>
+  <title> 跨域请求之cookie | Fancy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016-12-17/前端性能优化/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-08-03/跨域请求之cookie/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Fancy">
@@ -272,7 +290,7 @@
             
             
               
-                前端性能优化
+                跨域请求之cookie
               
             
           </h1>
@@ -285,8 +303,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-17T15:36:26+08:00">
-                2016-12-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-03T11:42:12+08:00">
+                2017-08-03
               </time>
             
 
@@ -295,24 +313,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/性能/" itemprop="url" rel="index">
-                    <span itemprop="name">性能</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -339,51 +339,29 @@
       
 
       
-        <p>作为一个有追求的前端，怎么会不为那几毫秒的而斗争呢？</p>
-<a id="more"></a>
-<h1 id="减少-HTTP-请求"><a href="#减少-HTTP-请求" class="headerlink" title="减少 HTTP 请求"></a>减少 HTTP 请求</h1><p>当浏览器向服务器发送一个 http 请求获取数据会经历如下过程：DNS域名解析 –&gt; 开启一个链接(tcp/ip 三次握手) –&gt; 建立TCP连接后发起http请求 –&gt; 等待(网络延迟 &amp;&amp; 服务器的处理时间) –&gt; 下载<br>大部分 http 请求花费时间是在建立与等待。http 协议建立 TCP/IP 协议之上。</p>
+        <h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>Cookie 的使用使得基于无状态的 HTTP 协议上记录稳定的状态信息成为了可能.</p>
+<p>HTTP Cookie（也叫Web cookie或者浏览器Cookie）是服务器发送到用户浏览器并保存在浏览器上的一块数据, 它会在浏览器下一次发起请求时被携带并发送到服务器上.</p>
+<p>Cookie 主要用在如下三个方面:</p>
 <ul>
-<li><strong>css sprites:</strong> 将多张图片合成一副单独的图片，使用css的background-position属性辅助放到合适的位置上。降低了下载量，合并的图片比分离的图片小，降低了图片自身的开销(颜色表、格式信息等)，现逐渐被 <code>iconfont</code> 和  <code>SVG Sprite</code> 代替。</li>
-<li>内联图片: 通过使用 data:URL 模式可以在页面中包含图片而无需额外的请求。也可将图片放到css中作为背景使用，意味着数据可缓存在样式表内部。另base64有损压缩！</li>
-<li><strong>iconfont:</strong> 可以适应任何分辨率，具有比图片更小的容量，更高的灵活性，</li>
+<li>会话状态管理（如用户登录状态、购物车）</li>
+<li>个性化设置（如用户自定义设置）</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为）</li>
 </ul>
-<h1 id="页面内部优化"><a href="#页面内部优化" class="headerlink" title="页面内部优化"></a>页面内部优化</h1><ul>
-<li><strong>样式表放在顶部:</strong> 减少页面呈现时间，样式表放在底部会阻塞页面的逐步呈现。</li>
-<li><strong>脚本文件放在底部:</strong> 因为 script 中可以通过 <code>document.write</code> 修改页面，所以 script 文件放在顶部也会阻塞页面的逐步呈现。</li>
-<li><strong>避免css表达式:</strong></li>
-<li><strong>把脚本的样式表放在外部:</strong></li>
-<li><strong>移除重复脚本:</strong> 如果开发中有依赖管理的方法 AMD、CMD，基本不会出现这种状况</li>
-</ul>
-<h1 id="启用缓存"><a href="#启用缓存" class="headerlink" title="启用缓存"></a>启用缓存</h1><ul>
-<li><strong>expires/If-Modified-Since:</strong> http1.0</li>
-<li><strong>Cache-Control/Etag:</strong> http1.1 优先级更高</li>
-</ul>
-<h1 id="减少下载量"><a href="#减少下载量" class="headerlink" title="减少下载量"></a>减少下载量</h1><p>开启 gzip 压缩，需要在 CPU 的消耗和数据块的大小之间进行取舍。</p>
-<h1 id="网络连接上的优化"><a href="#网络连接上的优化" class="headerlink" title="网络连接上的优化"></a>网络连接上的优化</h1><ul>
-<li><strong>使用 CDN 加速:</strong> 地理上分布的web sever 集合，用于更高效的发布内容。基于网络远近来选择给具体用户服务的 web server，缩短了资源传输响应时间。</li>
-<li><p><strong>减少DNS查找:</strong> 用于映射主机名和 IP 地址，一般一次解析需要20～120毫秒。<br>域名解析 –&gt; 等待ISP返回结果，减少DNS能够减少等待时间，最好讲主机名控制在2～4个之间。</p>
-</li>
-<li><p><strong>避免重定向:</strong></p>
-</li>
-</ul>
-<p>将一个URL重新路由到另一个URL，重定向功能通过301和302两个状态码完成。</p>
-<h1 id="减少-DNS-查询"><a href="#减少-DNS-查询" class="headerlink" title="减少 DNS 查询"></a>减少 DNS 查询</h1><p>用户输入 URL 以后，浏览器首先要查询域名（hostname）对应服务器的 IP 地址，一般需要耗费 20-120 毫秒 时间。</p>
-<p>基于性能考虑，ISP、局域网、操作系统、浏览器都会有相应的 DNS 缓存机制。</p>
-<p>首次访问、没有相应的 DNS 缓存时，域名越多，查询时间越长。所以应尽量减少域名数量。但基于并行下载考虑，把资源分布到 2 个域名上（最多不超过 4 个）。这是减少 DNS 查询同时保证并行下载的折衷方案。－－域名发散？</p>
-<h1 id="域名收敛"><a href="#域名收敛" class="headerlink" title="域名收敛"></a>域名收敛</h1><p>www.hello.com.<br>二级域名.一级域名.顶级域名(根节点)</p>
-<h2 id="DNS-迭代解析"><a href="#DNS-迭代解析" class="headerlink" title="DNS 迭代解析"></a>DNS 迭代解析</h2><p>基于UDP的<br>跟节点 –&gt; 顶级域名 –&gt; 一级域名 –&gt; …</p>
-<ul>
-<li>拿到URL，浏览器寻找本地 DNS 缓存，查看有无对于的 IP 地址，如果没有则向 DNS Server 发送请求，找到对于 IP 地址。</li>
-<li>向你 ISP(互联网服务提供商) 的 DNS servers 发送 DNS query，递归查询，直接返回对应的IP地址。</li>
-</ul>
-<h2 id="域名发散"><a href="#域名发散" class="headerlink" title="域名发散"></a>域名发散</h2><p>域名发散: PC 时代为突破浏览器的域名并发限制，遵循：<code>http 静态资源采用多个子域名</code>。目的是充分利用现代浏览器的多线程并发下载能力。每个浏览器允许每个域名的并行连接数是有限制的。</p>
-<p>并发限制原因:</p>
-<ul>
-<li>根本原因是以前服务器负载能力差，浏览器对max connections(最大并发数)进行限制。</li>
-<li>防止 DDOS 攻击。</li>
-</ul>
-<h2 id="域名收敛-1"><a href="#域名收敛-1" class="headerlink" title="域名收敛"></a>域名收敛</h2><p>域名收敛的意思就是建议将静态资源只放在一个域名下面。因地制宜，移动互联网时代通过无线设备访问网站，这种情况下提出域名收敛。<br>发送http请求，DNS 解析在移动端占据大部分时间。</p>
-<h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p><a href="http://taobaofed.org/blog/2015/12/16/h5-performance-optimization-and-domain-convergence/" target="_blank" rel="external">域名收敛</a></p>
+<p>会话期 Cookie 是最简单的 Cookie, 浏览器关闭之后会被自动删除, 仅在会话期间有效.</p>
+<h4 id="创建-Cookie"><a href="#创建-Cookie" class="headerlink" title="创建 Cookie"></a>创建 Cookie</h4><p>当服务器收到 HTTP 请求时, 可以在响应头里面增加一个 <code>Set-Cookie</code> 头部, 浏览器收到响应之后会取出 Cookie 信息并保存, 之后对该服务器每一次请求中都通过 Cookie 请求头部将 Cookie 信息发送给服务器。另外, Cookie 的过期时间、域、路径、有效期、站点都可以根据需要来指定.</p>
+<h4 id="操作-Cookie"><a href="#操作-Cookie" class="headerlink" title="操作 Cookie"></a>操作 Cookie</h4><p>客户端可以通过 <code>document.cookie</code> 来未被指定 <code>HttpOnly</code> 标志操作 Cookie.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.cookie = &quot;user=mxl&quot;;</div></pre></td></tr></table></figure>
+<h3 id="跨域请求携带-Cookie"><a href="#跨域请求携带-Cookie" class="headerlink" title="跨域请求携带 Cookie"></a>跨域请求携带 Cookie</h3><p>CORS 请求默认不发送 Cookie 和 HTTP 认证信息.</p>
+<p>本文基于 <code>fetch</code> 和 <code>node</code> 来描述与服务器跨域通信携带 Cookie 的情况. 跨域请求携带 Cookie 也需要服务端和客户端同时支持.</p>
+<p>一、客户端允许发送 Cookie<br>credentials 是请求的credentials, 可以为设置为 omit(不允许携带Cookie)、same-origin(同源下允许携带Cookie)、include(总是发送Cookie, 包括跨域).</p>
+<p>为了允许在当前域名跨域请求发送 cookie，客户端的请求需要配置 <code>credentials</code> 为 <code>include</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fetch(&apos;/api&apos;, &#123; method: &apos;GET&apos;, credentials: &apos;include&apos; &#125;);</div></pre></td></tr></table></figure>
+<p>使用 Ajax 需在请求中打开 <code>withCredentials</code> 属性.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var xhr = new XMLHttpRequest();</div><div class="line">xhr.withCredentials = true;</div></pre></td></tr></table></figure></p>
+<p>否则，即使服务器同意发送Cookie，浏览器也不会发送。或者，服务器要求设置Cookie，浏览器也不会处理。</p>
+<p>二、 服务端允许发送 Cookie</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Credentials: true</div></pre></td></tr></table></figure>
+<p>需要注意的是, 如果要发送 Cookie, <code>Access-Control-Allow-Origin</code> 不能设置为通配符 <code>*</code>, 必须明确指定与请求网页一致的域名.</p>
+<p>同时，Cookie依然遵循同源政策，只有用服务器域名设置的 Cookie 才会上传，其他域名的 Cookie 并不会上传，且（跨源）原网页代码中的 <code>document.cookie</code> 也无法读取服务器域名下的 Cookie。</p>
 
       
     </div>
@@ -405,19 +383,13 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/网络/" rel="tag"># 网络</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016-12-14/Front-end-Design/" rel="next" title="Front-end Design">
-                <i class="fa fa-chevron-left"></i> Front-end Design
+              <a href="/2017-07-19/前端测试/" rel="next" title="前端测试">
+                <i class="fa fa-chevron-left"></i> 前端测试
               </a>
             
           </div>
@@ -425,10 +397,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016-12-26/export-和-module-exports-的区别/" rel="prev" title="export 和 module.exports 的区别">
-                export 和 module.exports 的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -548,7 +516,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#减少-HTTP-请求"><span class="nav-number">1.</span> <span class="nav-text">减少 HTTP 请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#页面内部优化"><span class="nav-number">2.</span> <span class="nav-text">页面内部优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启用缓存"><span class="nav-number">3.</span> <span class="nav-text">启用缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#减少下载量"><span class="nav-number">4.</span> <span class="nav-text">减少下载量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络连接上的优化"><span class="nav-number">5.</span> <span class="nav-text">网络连接上的优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#减少-DNS-查询"><span class="nav-number">6.</span> <span class="nav-text">减少 DNS 查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#域名收敛"><span class="nav-number">7.</span> <span class="nav-text">域名收敛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-迭代解析"><span class="nav-number">7.1.</span> <span class="nav-text">DNS 迭代解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名发散"><span class="nav-number">7.2.</span> <span class="nav-text">域名发散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名收敛-1"><span class="nav-number">7.3.</span> <span class="nav-text">域名收敛</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献："><span class="nav-number">7.3.1.</span> <span class="nav-text">参考文献：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie"><span class="nav-number">1.</span> <span class="nav-text">Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建-Cookie"><span class="nav-number">1.1.</span> <span class="nav-text">创建 Cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作-Cookie"><span class="nav-number">1.2.</span> <span class="nav-text">操作 Cookie</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域请求携带-Cookie"><span class="nav-number">2.</span> <span class="nav-text">跨域请求携带 Cookie</span></a></li></ol></div>
             
 
           </div>
