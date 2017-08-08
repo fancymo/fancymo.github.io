@@ -326,32 +326,15 @@
 
       
         
-          
-            <h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>Cookie 的使用使得基于无状态的 HTTP 协议上记录稳定的状态信息成为了可能.</p>
+          <h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>Cookie 的使用使得基于无状态的 HTTP 协议上记录稳定的状态信息成为了可能.</p>
 <p>HTTP Cookie（也叫Web cookie或者浏览器Cookie）是服务器发送到用户浏览器并保存在浏览器上的一块数据, 它会在浏览器下一次发起请求时被携带并发送到服务器上.</p>
-<p>Cookie 主要用在如下三个方面:</p>
-<ul>
-<li>会话状态管理（如用户登录状态、购物车）</li>
-<li>个性化设置（如用户自定义设置）</li>
-<li>浏览器行为跟踪（如跟踪分析用户行为）</li>
-</ul>
-<p>会话期 Cookie 是最简单的 Cookie, 浏览器关闭之后会被自动删除, 仅在会话期间有效.</p>
-<h4 id="创建-Cookie"><a href="#创建-Cookie" class="headerlink" title="创建 Cookie"></a>创建 Cookie</h4><p>当服务器收到 HTTP 请求时, 可以在响应头里面增加一个 <code>Set-Cookie</code> 头部, 浏览器收到响应之后会取出 Cookie 信息并保存, 之后对该服务器每一次请求中都通过 Cookie 请求头部将 Cookie 信息发送给服务器。另外, Cookie 的过期时间、域、路径、有效期、站点都可以根据需要来指定.</p>
-<h4 id="操作-Cookie"><a href="#操作-Cookie" class="headerlink" title="操作 Cookie"></a>操作 Cookie</h4><p>客户端可以通过 <code>document.cookie</code> 来未被指定 <code>HttpOnly</code> 标志操作 Cookie.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.cookie = &quot;user=mxl&quot;;</div></pre></td></tr></table></figure>
-<h3 id="跨域请求携带-Cookie"><a href="#跨域请求携带-Cookie" class="headerlink" title="跨域请求携带 Cookie"></a>跨域请求携带 Cookie</h3><p>CORS 请求默认不发送 Cookie 和 HTTP 认证信息.</p>
-<p>本文基于 <code>fetch</code> 和 <code>node</code> 来描述与服务器跨域通信携带 Cookie 的情况. 跨域请求携带 Cookie 也需要服务端和客户端同时支持.</p>
-<p>一、客户端允许发送 Cookie<br>credentials 是请求的credentials, 可以为设置为 omit(不允许携带Cookie)、same-origin(同源下允许携带Cookie)、include(总是发送Cookie, 包括跨域).</p>
-<p>为了允许在当前域名跨域请求发送 cookie，客户端的请求需要配置 <code>credentials</code> 为 <code>include</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fetch(&apos;/api&apos;, &#123; method: &apos;GET&apos;, credentials: &apos;include&apos; &#125;);</div></pre></td></tr></table></figure>
-<p>使用 Ajax 需在请求中打开 <code>withCredentials</code> 属性.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var xhr = new XMLHttpRequest();</div><div class="line">xhr.withCredentials = true;</div></pre></td></tr></table></figure></p>
-<p>否则，即使服务器同意发送Cookie，浏览器也不会发送。或者，服务器要求设置Cookie，浏览器也不会处理。</p>
-<p>二、 服务端允许发送 Cookie</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Credentials: true</div></pre></td></tr></table></figure>
-<p>需要注意的是, 如果要发送 Cookie, <code>Access-Control-Allow-Origin</code> 不能设置为通配符 <code>*</code>, 必须明确指定与请求网页一致的域名.</p>
-<p>同时，Cookie依然遵循同源政策，只有用服务器域名设置的 Cookie 才会上传，其他域名的 Cookie 并不会上传，且（跨源）原网页代码中的 <code>document.cookie</code> 也无法读取服务器域名下的 Cookie。</p>
-
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017-08-03/跨域请求之cookie/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -465,57 +448,14 @@
 
       
         
-          
-            <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="为什么项目需要测试"><a href="#为什么项目需要测试" class="headerlink" title="为什么项目需要测试"></a>为什么项目需要测试</h4><p>测试是完善的研发体系中不可或缺的一环，前端同样需要测试。一个项目最终会经过快速迭代走向以维护为主的状态，在合理的时机以合适的方式引入自动化能够让我们提前发现 bug，此时定位和修复的速度比开发完再被叫去修改 bug 要快许多；在项目重构或者开发人员发生变化也能保障预期功能的实现。</p>
-<h4 id="可测试方向"><a href="#可测试方向" class="headerlink" title="可测试方向"></a>可测试方向</h4><ul>
-<li>界面回归测试: 测试界面是否正常，这是前端测试最基础的环节</li>
-<li>功能测试: 测试功能操作是否正常，由于涉及交互，这部分测试比界面测试会更复杂</li>
-<li>性能测试: 页面性能越来越受到关注，并且性能需要在开发过程中持续关注，否则很容易随着业务迭代而下降</li>
-<li>页面特征检测: 有些动态区域无法通过界面对比进行测试、也没有功能上的异常，但可能不符合需求。例如性能测试中移动端大图素材检测就是一种特征检测，另外常见的还有页面区块静态资源是否符合预期等等。</li>
-</ul>
-<h4 id="前端测试框架"><a href="#前端测试框架" class="headerlink" title="前端测试框架"></a>前端测试框架</h4><p>前端测试工具也和前端的框架一样纷繁复杂，其中常见的测试工具，大致可分为测试框架、断言库、测试覆盖率工具等几类。常见的测试框架有<code>Jasmine</code>, <code>Mocha</code>, 以及要介绍的 <code>Jest</code>。</p>
-<p>测试框架的作用是提供一些方便的语法来描述测试用例，以及对用例进行分组。<br>测试框架可分为两种，TDD （测试驱动开发）和 BDD （行为驱动开发）。</p>
-<blockquote>
-<p>前端是一种特殊的GUI软件.</p>
-</blockquote>
-<h4 id="断言库"><a href="#断言库" class="headerlink" title="断言库"></a>断言库</h4><p>所谓断言，即提供语义化的方法，用于对参与测试的值做各种各样的判断，如不一致就抛出错误。常见的断言库有 <code>should.js</code>, <code>Chai.js</code></p>
-<p>所有的测试用例（it块）都应该含有一句或多句的断言。它是编写测试用例的关键</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expect(add(1, 1)).to.be.equal(2);</div></pre></td></tr></table></figure>
-<h3 id="Jest"><a href="#Jest" class="headerlink" title="Jest"></a>Jest</h3><p>Jest 内置了常用的测试工具，如断言、测试覆盖率。</p>
-<h4 id="命名惯例"><a href="#命名惯例" class="headerlink" title="命名惯例"></a>命名惯例</h4><p>测试文件有如下常见的命名惯例。</p>
-<ul>
-<li><code>__tests__</code> 目录下以 <code>.js</code> 为后缀的文件。</li>
-<li>以 <code>.test.js(x)</code> 或者 <code>.spec.js(x)</code> 为后缀的文件。</li>
-</ul>
-<p>测试文件可以位于项目根目录下任何位置，可以通过 <code>testMatch</code> 修改默认配置。</p>
-<h4 id="编写测试"><a href="#编写测试" class="headerlink" title="编写测试"></a>编写测试</h4><p>Jest 的作用是运行测试脚本。通常，测试脚本与所要测试的源码脚本同名，但是后缀名为 <code>.test.js</code>。测试脚本可以独立运行。</p>
-<p>测试脚本里包含一个或多个 <code>describe</code> 块， 每个 <code>describe</code> 里应该包含一个或多个 <code>test</code> 块。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* add.js */</div><div class="line">function add(x, y) &#123;</div><div class="line">  return x + y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* add.test.js */</div><div class="line">const add = require(&apos;./add.js&apos;);</div><div class="line">describe(&apos;加法函数的测试&apos;, function() &#123;</div><div class="line">  it(&apos;1 加 1 应该等于 2&apos;, function() &#123;</div><div class="line">    expect(add(1, 1)).toBe(2);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>Jest 提供了内置的全局函数 <code>expect</code> 进行断言。</p>
-<p><code>describe</code> 称为测试套件（test suite），表示一组相关的测试。第一个参数是测试套件的名称，第二个参数是实际执行的函数。</p>
-<p><code>test</code> 称为测试用例（test case），表示一个单独的测试，是测试的最小单位。第一个参数是测试用例的名称，第二个参数是实际执行的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">it(&apos;work without done&apos;, () =&gt; &#123;&#125;); // 同步执行</div><div class="line"></div><div class="line">it(&apos;work with done&apos;, (done) =&gt; &#123;&#125;); // 触发异步，执行 done() 通知 Jest 之行完毕</div></pre></td></tr></table></figure></p>
-<h4 id="异步测试"><a href="#异步测试" class="headerlink" title="异步测试"></a>异步测试</h4><p>使用单个参数调用 <code>done</code>, Jest 会等 <code>done</code> 回调函数执行结束后，结束测试。如果 <code>done()</code> 永远不被调用，这个测试将失败。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">it(&apos;works with done&apos;, (done) =&gt; &#123;</div><div class="line">  var x = true;</div><div class="line">  var f = function() &#123;</div><div class="line">    x = false;</div><div class="line">    expect(x).toBeFalsy();</div><div class="line">    done(); // 通知 Jest 测试结束</div><div class="line">  &#125;;</div><div class="line">  setTimeout(f, 4000);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>Jest 支持使用 Promise， 从测试返回一个 Promise, Jest 会等待这一 Promise resolve。 如果 Promise 被拒绝，则测试将自动失败。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">const requestFn = (name) =&gt; &#123;</div><div class="line">  return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">    setTimeout(() =&gt; &#123;</div><div class="line">      resolve(&apos;name&apos;);</div><div class="line">    &#125;, 1000);</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">it(&apos;works with promises&apos;, () =&gt; &#123;</div><div class="line">  expect.assertions(1);  // 当前测试中执行断言的次数</div><div class="line">  return requestFn(&apos;mxl&apos;).then(data =&gt; expect(data).toBe(&apos;name&apos;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>Jest 也支持 async/await 语法的测试，无需多余的操作，只要在 await 后进行断言即可。</p>
-<p>可以使用 <code>expect.assertions</code> 来验证一定数量的断言被调用，以判断异步代码是否如预期一般执行。</p>
-<h4 id="测试组件"><a href="#测试组件" class="headerlink" title="测试组件"></a>测试组件</h4><p><em>冒烟测试</em> 验证一个组件渲染没有抛出异常，浅渲染并且测试一些输出，完整渲染测试组件的生命周期和状态的改变。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line">import App from &apos;./App&apos;;</div><div class="line"></div><div class="line">it(&apos;renders without crashing&apos;, () =&gt; &#123;</div><div class="line">  const div = document.createElement(&apos;div&apos;);</div><div class="line">  ReactDOM.render(&lt;App /&gt;, div);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h4 id="初始化测试环境"><a href="#初始化测试环境" class="headerlink" title="初始化测试环境"></a>初始化测试环境</h4><p>使用 browser API 需要 mock，或者在测试前运行全局的配置，可以在 <code>setup.js</code> 文件里配置。</p>
-<h4 id="测试用例钩子"><a href="#测试用例钩子" class="headerlink" title="测试用例钩子"></a>测试用例钩子</h4><p>有时我们想在测试开始之前进行下环境的检查、或者在测试结束之后作一些清理操作，这就需要对用例进行预处理或后处理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">describe(&apos;hooks&apos;, function() &#123;</div><div class="line"></div><div class="line">  beforeAll(function() &#123;</div><div class="line">    // 在本区块的所有测试用例之前执行</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  afterAll(function() &#123;</div><div class="line">    // 在本区块的所有测试用例之后执行</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  beforeEach(function() &#123;</div><div class="line">    // 在本区块的每个测试用例之前执行</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  afterEach(function() &#123;</div><div class="line">    // 在本区块的每个测试用例之后执行</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  // test cases</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<h4 id="测试用例管理"><a href="#测试用例管理" class="headerlink" title="测试用例管理"></a>测试用例管理</h4><p>项目中测试用例很多，但希望只运行其中的几个，可以用only方法，<code>describe</code> 块和 <code>test</code> 块都允许调用 <code>only</code> 方法，表示只运行某个测试套件或测试用例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">it.only(&apos;1 加 1 应该等于 2&apos;, () =&gt; &#123; ... &#125;);</div><div class="line">fit(&apos;1 加 1 应该等于 2&apos;, () =&gt; &#123; ... &#125;);</div></pre></td></tr></table></figure></p>
-<p>此外，还有 <code>skip</code> 方法，表示跳过指定的测试套件或测试用例。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">it.skip(&apos;1 加 1 应该等于 2&apos;, () =&gt; &#123; ... &#125;);</div><div class="line">xit(&apos;1 加 1 应该等于 2&apos;, () =&gt; &#123; ... &#125;);</div></pre></td></tr></table></figure>
-<h4 id="覆盖率报告"><a href="#覆盖率报告" class="headerlink" title="覆盖率报告"></a>覆盖率报告</h4><p>Jest 匹配文件生成测试报告，不需要额外的配置。</p>
-<p>除了会再终端展示测试覆盖率情况，还会在项目下生产一个 coverage 目录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm test -- --coverage</div></pre></td></tr></table></figure></p>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>对于一些需求频繁变更、复用性较低的内容，编写测试用例得不偿失，适合引入测试用例的场景如下:</p>
-<ul>
-<li>需要长期维护的项目。它们需要测试来保障代码可维护性、功能的稳定性</li>
-<li>较为稳定的项目、或项目中较为稳定的部分。给它们写测试用例，维护成本低</li>
-<li>被多次复用的部分，比如一些通用组件和库函数。因为多处复用，更要保障质量</li>
-</ul>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p><a href="https://github.com/superman66/react-test-demo" target="_blank" rel="external">react-test-demo(git上挺好的中文讲解)</a><br><a href="http://facebook.github.io/jest/zh-Hans/" target="_blank" rel="external">jest(中文)</a><br><a href="http://facebook.github.io/jest/en/" target="_blank" rel="external">jest(英文)</a><br><a href="https://www.youtube.com/watch?v=HAuXJVI_bUs" target="_blank" rel="external">Jest Snapshots and Beyond - React Conf 2017</a><br><a href="http://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/" target="_blank" rel="external">The Difference Between TDD and BDD</a></p>
-
-          
+          <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h4 id="为什么项目需要测试"><a href="#为什么项目需要测试" class="headerlink" title="为什么项目需要测试"></a>为什么项目需要测试</h4><p>测试是完善的研发体系中不可或缺的一环，前端同样需要测试。一个项目最终会经过快速迭代走向以维护为主的状态，在合理的时机以合适的方式引入自动化能够让我们提前发现 bug，此时定位和修复的速度比开发完再被叫去修改 bug 要快许多；在项目重构或者开发人员发生变化也能保障预期功能的实现。</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017-07-19/前端测试/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
