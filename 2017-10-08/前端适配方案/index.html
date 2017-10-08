@@ -1,0 +1,776 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT, Fancy, Blog, Web, React" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1 基本概念在讨论方案的时候，先明确几个概念：
+1.1视窗 viewport桌面浏览器中 viewport 严格等于浏览器的窗口，它的作用是给 CSS 布局限制一个最大宽度，viewport 的宽度和浏览器窗口的宽度一致。
+但在移动设备上有点复杂，为更好的为 CSS 布局服务，提供了两个 viewport ：Visual Viewport 、Layout Viewport 。浏览器为让用户在小屏下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端适配方案">
+<meta property="og:url" content="http://yoursite.com/2017-10-08/前端适配方案/index.html">
+<meta property="og:site_name" content="Fancy's Blog">
+<meta property="og:description" content="1 基本概念在讨论方案的时候，先明确几个概念：
+1.1视窗 viewport桌面浏览器中 viewport 严格等于浏览器的窗口，它的作用是给 CSS 布局限制一个最大宽度，viewport 的宽度和浏览器窗口的宽度一致。
+但在移动设备上有点复杂，为更好的为 CSS 布局服务，提供了两个 viewport ：Visual Viewport 、Layout Viewport 。浏览器为让用户在小屏下">
+<meta property="og:image" content="http://yoursite.com/images/adaptation/layout01.png">
+<meta property="og:image" content="http://yoursite.com/images/adaptation/layout02.png">
+<meta property="og:image" content="http://yoursite.com/images/adaptation/layout03.png">
+<meta property="og:updated_time" content="2017-10-08T08:23:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端适配方案">
+<meta name="twitter:description" content="1 基本概念在讨论方案的时候，先明确几个概念：
+1.1视窗 viewport桌面浏览器中 viewport 严格等于浏览器的窗口，它的作用是给 CSS 布局限制一个最大宽度，viewport 的宽度和浏览器窗口的宽度一致。
+但在移动设备上有点复杂，为更好的为 CSS 布局服务，提供了两个 viewport ：Visual Viewport 、Layout Viewport 。浏览器为让用户在小屏下">
+<meta name="twitter:image" content="http://yoursite.com/images/adaptation/layout01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017-10-08/前端适配方案/"/>
+
+
+
+
+
+  <title> 前端适配方案 | Fancy's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Fancy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Too Young Too Simple >_</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-10-08/前端适配方案/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Fancy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Fancy's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Fancy's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端适配方案
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-08T16:18:54+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1 基本概念"></a>1 基本概念</h3><p>在讨论方案的时候，先明确几个概念：</p>
+<h4 id="1-1视窗-viewport"><a href="#1-1视窗-viewport" class="headerlink" title="1.1视窗 viewport"></a>1.1视窗 viewport</h4><p>桌面浏览器中 viewport 严格等于浏览器的窗口，它的作用是给 CSS 布局限制一个最大宽度，viewport 的宽度和浏览器窗口的宽度一致。</p>
+<p>但在移动设备上有点复杂，为更好的为 CSS 布局服务，提供了两个 viewport ：<strong>Visual Viewport </strong>、<strong>Layout Viewport</strong> 。浏览器为让用户在小屏下网页也能显示的很好，所以把宽度设置的很大，一般在 768px～1024px 。可以通过 <code>&lt;meta&gt;</code> 设置 LayoutViewport 的宽度：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=640"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>媒体查询的尺寸指的是 LayoutViewport。<code>document.documentElement.clientWidth/Height</code> 返回 LayoutViewport 的尺寸。</p>
+<h4 id="1-2-物理像素（Physical-Pixel）"><a href="#1-2-物理像素（Physical-Pixel）" class="headerlink" title="1.2 物理像素（Physical Pixel）"></a>1.2 物理像素（Physical Pixel）</h4><p>物理像素又被称为设备像素，是显示设备中最微小的物理部件。一般所说的分辨率指的是物理像素。</p>
+<h4 id="1-3-设备独立像素（Density-Independent-Pixel）"><a href="#1-3-设备独立像素（Density-Independent-Pixel）" class="headerlink" title="1.3 设备独立像素（Density-Independent Pixel）"></a>1.3 设备独立像素（Density-Independent Pixel）</h4><p>可以认为是计算机坐标系统中的一个点，这个点代表一个可以由程序使用的虚拟像素，如 CSS像素，然后由相关系统转换为物理像素。</p>
+<h4 id="1-4-CSS像素"><a href="#1-4-CSS像素" class="headerlink" title="1.4 CSS像素"></a>1.4 CSS像素</h4><p>CSS像素是一个抽象的单位，主要是用在浏览器上，度量 Web 页面的内容，称为设备独立像素。CSS 像素相当于多少设备像素取决于两个条件：</p>
+<ul>
+<li>页面是否缩放</li>
+<li>屏幕是否为高密度</li>
+</ul>
+<h4 id="1-5-单位英寸像素数（Pixel-Per-Inch，PPI）"><a href="#1-5-单位英寸像素数（Pixel-Per-Inch，PPI）" class="headerlink" title="1.5 单位英寸像素数（Pixel Per Inch，PPI）"></a>1.5 单位英寸像素数（Pixel Per Inch，PPI）</h4><p>现实世界的一英寸内像素数，决定了屏幕的显示质量。</p>
+<h4 id="1-6-设备像素比率（Device-Pixel-Ratio，DPR）"><a href="#1-6-设备像素比率（Device-Pixel-Ratio，DPR）" class="headerlink" title="1.6 设备像素比率（Device Pixel Ratio，DPR）"></a>1.6 设备像素比率（Device Pixel Ratio，DPR）</h4><p>物理像素与逻辑像素的对应关系。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">设备像素比 = 物理像素 / 设备独立像素</div></pre></td></tr></table></figure>
+<h3 id="2-适配方案"><a href="#2-适配方案" class="headerlink" title="2 适配方案"></a>2 适配方案</h3><p>结合过往的经验，总结了下包括移动端、PC端适配的方案，大致有如下实现方式：</p>
+<ol>
+<li>媒体查询：CSS3 的 <code>media</code></li>
+<li><code>flex</code> 弹性布局</li>
+<li>以手淘为代表的 <code>rem</code> + <code>viewport</code> 实现</li>
+<li><code>rem</code> 的方式</li>
+</ol>
+<h4 id="2-1-媒体查询"><a href="#2-1-媒体查询" class="headerlink" title="2.1 媒体查询"></a>2.1 媒体查询</h4><blockquote>
+<p>一个响应式网页由三部分组成：一个灵活的布局、灵活的图片和媒体、以及媒体查询</p>
+</blockquote>
+<p>主要是通过媒体查询设备的宽度来执行不同的 <code>CSS</code> 代码，最终达到界面的配置。</p>
+<p>优点：</p>
+<ol>
+<li><code>media query</code> 可以做到设备像素比的判断，方法简单，<strong>Bootstrap</strong> 等框架使用这种布局实现响应式布局；</li>
+<li>调整屏幕时不用刷新界面即可响应式展示；</li>
+<li>便于修改，只需修改 <code>CSS</code> 文件。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>代码量较大；</li>
+<li>兼顾大屏幕或高清设备，造成资源浪费；</li>
+<li>兼顾移动端和 PC端响应式展示效果，损失各自特有的交互方式。</li>
+</ol>
+<h4 id="2-2-flex-弹性布局"><a href="#2-2-flex-弹性布局" class="headerlink" title="2.2 flex 弹性布局"></a>2.2 flex 弹性布局</h4><p>设置固定的 <code>viewport</code>，固定高度，宽度自适应，元素采用 <code>px</code> 做单位。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>随着屏幕的变化，页面也会跟着变化，效果和 PC页面堵流体布局差不多。</p>
+<h4 id="2-3-Flexible"><a href="#2-3-Flexible" class="headerlink" title="2.3. Flexible"></a>2.3. Flexible</h4><p>手淘使用 Flexible 实现H5页面的终端适配，基本思路如下：</p>
+<ol>
+<li>选择一种尺寸作为设计和开发的基准；</li>
+<li>定义一套适配规则，自动适配剩下的尺寸；</li>
+<li>特殊适配效果给出设计效果。</li>
+</ol>
+<p>Flexible 会根据不同的设备在 <code>&lt;html&gt;</code> 元素上增加不同的 <code>data-dpr</code> 属性以及 <code>font-size</code> 样式。设置 <code>&lt;meta&gt;</code>标签使得页面的宽度为渲染像素尺寸。页面中的元素通过 <code>rem</code> 单位来设置，根据 <code>&lt;html&gt;</code>  元素的 <code>font-size</code> 值做计算，从而实现屏幕的适配效果。</p>
+<p>文本字号不建议是用 <code>rem</code> ，在 Flexible 整个适配方案中，考虑文本还是使用 <code>px</code> 作为单位，通过使用 <code>data-dpr</code> 属性区分不同 <code>dpr</code> 下单文本字号大小：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">div &#123;</div><div class="line">    width: 1rem;</div><div class="line">    height: 0.4rem;</div><div class="line">    font-size: 12px; // 默认写上dpr为1的fontSize</div><div class="line">&#125;</div><div class="line">[data-dpr=&quot;2&quot;] div &#123;</div><div class="line">    font-size: 24px;</div><div class="line">&#125;</div><div class="line">[data-dpr=&quot;3&quot;] div &#123;</div><div class="line">    font-size: 36px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方案实现仅适合手机端，手淘也仅考虑了手机端的适配情况，大于 540px 的屏幕固定内容区域为 540px，两边留白。但该方案的思路值得学习，想让元素适配的时候就用 <code>rem</code>，想让文字不缩放的时候就用 <code>px</code>，比较灵活。</p>
+<p>现考虑到 pad 端设备尺寸相差较大，期望大屏幕能够显示更多的内容，充分利用大屏的优势，我们的项目不完全使用该方案。</p>
+<h4 id="2-4-固定宽度，viewport-缩放"><a href="#2-4-固定宽度，viewport-缩放" class="headerlink" title="2.4 固定宽度，viewport 缩放"></a>2.4 固定宽度，viewport 缩放</h4><p>设计图、页面宽度、viewport width 使用一个同一个宽度，单位使用 <code>px</code>，浏览器完成缩放。</p>
+<p>与 Flexible 实现效果一致，通过在不同屏幕上缩放来实现适配。</p>
+<h4 id="2-5-vw、vh"><a href="#2-5-vw、vh" class="headerlink" title="2.5 vw、vh"></a>2.5 vw、vh</h4><h3 id="3-主流-pad-设备"><a href="#3-主流-pad-设备" class="headerlink" title="3 主流 pad 设备"></a>3 主流 pad 设备</h3><p>以 iPad 为主，展示了部分设备的分辨率、设备独立像素等信息。</p>
+<table>
+<thead>
+<tr>
+<th>Tablet</th>
+<th style="text-align:left">Platform</th>
+<th>Width × Height(dp)</th>
+<th>Width × Height(px)</th>
+<th>Density</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPad</td>
+<td style="text-align:left">iOS</td>
+<td>768 × 1024</td>
+<td>768 × 1024</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>iPad Mini</td>
+<td style="text-align:left">iOS</td>
+<td>768 × 1024</td>
+<td>768 × 1024</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>iPad Mini Retina</td>
+<td style="text-align:left">iOS</td>
+<td>768 × 1024</td>
+<td>1536 × 2048</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>iPad Pro</td>
+<td style="text-align:left">iOS</td>
+<td>1366  × 1024</td>
+<td>2732 × 2048</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>iPad Retina</td>
+<td style="text-align:left">iOS</td>
+<td>768 × 1024</td>
+<td>1536 × 2048</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>Microsoft Surface Pro 4</td>
+<td style="text-align:left">Windows</td>
+<td>1368 × 912</td>
+<td>2736 × 1824</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>Samsung Galaxy Tab 10</td>
+<td style="text-align:left">Android</td>
+<td>800 × 1200</td>
+<td>2048 × 1536</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-适配方案"><a href="#4-适配方案" class="headerlink" title="4 适配方案"></a>4 适配方案</h3><p>本次考虑的是 pad 端适配，过程中权衡各个分辨率下页面布局的情况以及最终编译文件大小，做出了一些取舍。</p>
+<h4 id="4-1-设置-viewport-为设备尺寸"><a href="#4-1-设置-viewport-为设备尺寸" class="headerlink" title="4.1 设置 viewport 为设备尺寸"></a>4.1 设置 viewport 为设备尺寸</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no&quot;&gt;</div></pre></td></tr></table></figure>
+<h4 id="4-2-媒体查询布局"><a href="#4-2-媒体查询布局" class="headerlink" title="4.2 媒体查询布局"></a>4.2 媒体查询布局</h4><p>界面布局上根据 bootstrap 定义的不同设备分辨率，现考虑针对 <strong>小于 768px</strong>、<strong>大于768px且小于992px</strong>、<strong>大于992px</strong>的屏幕做不同处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 超小屏幕（手机，小于 768px） */</div><div class="line">/* 移动设备有限，逐级增加样式 */</div><div class="line"></div><div class="line">/* 小屏幕（平板，大于等于 768px） */</div><div class="line">@media (min-width: @screen-sm-min) &#123; ... &#125;</div><div class="line"></div><div class="line">/* 中等屏幕（桌面显示器，大于等于 992px） */</div><div class="line">@media (min-width: @screen-md-min) &#123; ... &#125;</div><div class="line"></div><div class="line">/* 大屏幕（大桌面显示器，大于等于 1200px） */</div><div class="line">/* 权衡到 pad端主流使用屏幕不会太大，且减少代码量，考虑将 1200px 与 992px 合并适配 */</div><div class="line">@media (min-width: @screen-lg-min) &#123; ... &#125;</div></pre></td></tr></table></figure>
+<p>实现效果如下：</p>
+<p><img src="/images/adaptation/layout01.png" alt="Alt text"></p>
+<p><img src="/images/adaptation/layout02.png" alt="Alt text"></p>
+<p><img src="/images/adaptation/layout03.png" alt="Alt text"></p>
+<h4 id="4-2-rem"><a href="#4-2-rem" class="headerlink" title="4.2 rem"></a>4.2 rem</h4><p>针对不同分辨率、dpr下要适配的元素，使用 rem 进行灵活的适配。</p>
+<h3 id="5-兼容"><a href="#5-兼容" class="headerlink" title="5 兼容"></a>5 兼容</h3><p>考虑适配兼容性良好的版本。</p>
+<ol>
+<li>Chrome 49 及以上</li>
+<li>Firefox 55及以上</li>
+<li>Safari 10.1及以上</li>
+<li>UC Browser</li>
+</ol>
+<h3 id="6-参考文献："><a href="#6-参考文献：" class="headerlink" title="6 参考文献："></a>6 参考文献：</h3><p>适配方案：</p>
+<p><a href="https://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html" target="_blank" rel="external">使用Flexible实现手淘H5页面的终端适配</a></p>
+<p><a href="https://github.com/riskers/blog/issues/17" target="_blank" rel="external">移动端适配方案(上) </a></p>
+<p><a href="https://github.com/riskers/blog/issues/18" target="_blank" rel="external">移动端适配方案(下) </a></p>
+<p><a href="https://icewing.cc/post/taobao-mobile-flexible.html" target="_blank" rel="external">手机淘宝的flexible设计与实现</a></p>
+<p><a href="https://github.com/imochen/hotcss" target="_blank" rel="external">hotcss</a></p>
+<p>分辨率及使用情况数据统计网站：</p>
+<p><a href="https://material.io/devices/" target="_blank" rel="external">Material Design</a></p>
+<p><a href="https://www.sven.de/dpi/" target="_blank" rel="external">DPI Calculator /PPI Calculator</a></p>
+<p><a href="http://screensiz.es/" target="_blank" rel="external">screensize</a></p>
+<p>尺寸、像素相关知识：</p>
+<p><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions" target="_blank" rel="external">The Ultimate Guide To iPhone Resolutions</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-08-03/跨域请求之cookie/" rel="next" title="跨域请求之cookie">
+                <i class="fa fa-chevron-left"></i> 跨域请求之cookie
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Fancy" />
+          <p class="site-author-name" itemprop="name">Fancy</p>
+          <p class="site-description motion-element" itemprop="description">让技术支撑起我的小小城......</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本概念"><span class="nav-number">1.</span> <span class="nav-text">1 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1视窗-viewport"><span class="nav-number">1.1.</span> <span class="nav-text">1.1视窗 viewport</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-物理像素（Physical-Pixel）"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 物理像素（Physical Pixel）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-设备独立像素（Density-Independent-Pixel）"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 设备独立像素（Density-Independent Pixel）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-CSS像素"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 CSS像素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-单位英寸像素数（Pixel-Per-Inch，PPI）"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 单位英寸像素数（Pixel Per Inch，PPI）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-设备像素比率（Device-Pixel-Ratio，DPR）"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 设备像素比率（Device Pixel Ratio，DPR）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-适配方案"><span class="nav-number">2.</span> <span class="nav-text">2 适配方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-媒体查询"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 媒体查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-flex-弹性布局"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 flex 弹性布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Flexible"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. Flexible</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-固定宽度，viewport-缩放"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 固定宽度，viewport 缩放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-vw、vh"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 vw、vh</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-主流-pad-设备"><span class="nav-number">3.</span> <span class="nav-text">3 主流 pad 设备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-适配方案"><span class="nav-number">4.</span> <span class="nav-text">4 适配方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-设置-viewport-为设备尺寸"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 设置 viewport 为设备尺寸</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-媒体查询布局"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 媒体查询布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-rem"><span class="nav-number">4.3.</span> <span class="nav-text">4.2 rem</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-兼容"><span class="nav-number">5.</span> <span class="nav-text">5 兼容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-参考文献："><span class="nav-number">6.</span> <span class="nav-text">6 参考文献：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fancy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
