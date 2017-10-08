@@ -84,25 +84,19 @@
 
 
 
-<meta name="description" content="1 基本概念在讨论方案的时候，先明确几个概念：
-1.1视窗 viewport桌面浏览器中 viewport 严格等于浏览器的窗口，它的作用是给 CSS 布局限制一个最大宽度，viewport 的宽度和浏览器窗口的宽度一致。
-但在移动设备上有点复杂，为更好的为 CSS 布局服务，提供了两个 viewport ：Visual Viewport 、Layout Viewport 。浏览器为让用户在小屏下">
+<meta name="description" content="1 基本概念在讨论方案的时候，先明确几个概念：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端适配方案">
 <meta property="og:url" content="http://yoursite.com/2017-10-08/前端适配方案/index.html">
 <meta property="og:site_name" content="Fancy's Blog">
-<meta property="og:description" content="1 基本概念在讨论方案的时候，先明确几个概念：
-1.1视窗 viewport桌面浏览器中 viewport 严格等于浏览器的窗口，它的作用是给 CSS 布局限制一个最大宽度，viewport 的宽度和浏览器窗口的宽度一致。
-但在移动设备上有点复杂，为更好的为 CSS 布局服务，提供了两个 viewport ：Visual Viewport 、Layout Viewport 。浏览器为让用户在小屏下">
+<meta property="og:description" content="1 基本概念在讨论方案的时候，先明确几个概念：">
 <meta property="og:image" content="http://yoursite.com/images/adaptation/layout01.png">
 <meta property="og:image" content="http://yoursite.com/images/adaptation/layout02.png">
 <meta property="og:image" content="http://yoursite.com/images/adaptation/layout03.png">
-<meta property="og:updated_time" content="2017-10-08T08:23:31.000Z">
+<meta property="og:updated_time" content="2017-10-08T08:36:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端适配方案">
-<meta name="twitter:description" content="1 基本概念在讨论方案的时候，先明确几个概念：
-1.1视窗 viewport桌面浏览器中 viewport 严格等于浏览器的窗口，它的作用是给 CSS 布局限制一个最大宽度，viewport 的宽度和浏览器窗口的宽度一致。
-但在移动设备上有点复杂，为更好的为 CSS 布局服务，提供了两个 viewport ：Visual Viewport 、Layout Viewport 。浏览器为让用户在小屏下">
+<meta name="twitter:description" content="1 基本概念在讨论方案的时候，先明确几个概念：">
 <meta name="twitter:image" content="http://yoursite.com/images/adaptation/layout01.png">
 
 
@@ -332,6 +326,7 @@
 
       
         <h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1 基本概念"></a>1 基本概念</h3><p>在讨论方案的时候，先明确几个概念：</p>
+<a id="more"></a>
 <h4 id="1-1视窗-viewport"><a href="#1-1视窗-viewport" class="headerlink" title="1.1视窗 viewport"></a>1.1视窗 viewport</h4><p>桌面浏览器中 viewport 严格等于浏览器的窗口，它的作用是给 CSS 布局限制一个最大宽度，viewport 的宽度和浏览器窗口的宽度一致。</p>
 <p>但在移动设备上有点复杂，为更好的为 CSS 布局服务，提供了两个 viewport ：<strong>Visual Viewport </strong>、<strong>Layout Viewport</strong> 。浏览器为让用户在小屏下网页也能显示的很好，所以把宽度设置的很大，一般在 768px～1024px 。可以通过 <code>&lt;meta&gt;</code> 设置 LayoutViewport 的宽度：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=640"</span>&gt;</span></div></pre></td></tr></table></figure>
